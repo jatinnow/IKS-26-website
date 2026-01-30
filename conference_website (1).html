@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Conference on IKS: Science and Technology | IISER Pune 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0a2463;
+            --science-blue: #1e3a8a;
+            --terracotta: #c8553d;
+            --gold: #d4af37;
+            --warm-gold: #f4d03f;
+            --cream: #faf7f2;
+            --charcoal: #2d2d2d;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--charcoal);
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 36, 99, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--terracotta);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--terracotta);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--terracotta);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(200, 85, 61, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--science-blue) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(200, 85, 61, 0.1) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(244, 208, 63, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 30px) rotate(240deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: var(--warm-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-detail {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-detail strong {
+            color: var(--warm-gold);
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            padding: 1.25rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 1s both;
+            border: 2px solid var(--terracotta);
+        }
+
+        .hero-cta:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(200, 85, 61, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold));
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlight {
+            background: linear-gradient(135deg, var(--deep-blue), var(--science-blue));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244, 208, 63, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .about-highlight h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-highlight p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Themes Section */
+        .themes {
+            background: var(--cream);
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .theme-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .theme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .theme-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .theme-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+        }
+
+        .theme-card p {
+            color: var(--charcoal);
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* Objectives Section */
+        .objectives {
+            background: white;
+        }
+
+        .obj-outcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .obj-outcome-box {
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--terracotta);
+        }
+
+        .obj-outcome-box.outcome {
+            border-left-color: var(--gold);
+        }
+
+        .obj-outcome-box h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .obj-outcome-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .obj-outcome-box li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .obj-outcome-box li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--terracotta);
+            font-size: 1.2rem;
+        }
+
+        .obj-outcome-box.outcome li::before {
+            color: var(--gold);
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: var(--cream);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--terracotta), var(--gold));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-time {
+            flex: 1;
+            text-align: right;
+            padding-right: 3rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        .timeline-item:nth-child(even) .timeline-time {
+            text-align: left;
+            padding-left: 3rem;
+            padding-right: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-left: 3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-right: 3rem;
+            padding-left: 2rem;
+            margin-right: 3rem;
+            margin-left: 0;
+        }
+
+        .timeline-content h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--cream);
+            z-index: 10;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            background: white;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .leader-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--light-gray);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .leader-role {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leader-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-title {
+            color: var(--charcoal);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Speakers Section */
+        .speakers {
+            background: var(--cream);
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .speaker-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .speaker-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--deep-blue), var(--science-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .speaker-info {
+            padding: 2rem;
+        }
+
+        .speaker-info h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .speaker-info p {
+            color: var(--charcoal);
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* Quiz Section */
+        .quiz {
+            background: linear-gradient(135deg, var(--terracotta), #e67e60);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .quiz .section-title {
+            color: white;
+        }
+
+        .quiz .section-title::after {
+            background: white;
+        }
+
+        .quiz p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .quiz-button {
+            background: white;
+            color: var(--terracotta);
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .quiz-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Sponsors Section */
+        .sponsors {
+            background: white;
+            text-align: center;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .sponsor-logo {
+            height: 100px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            opacity: 0.5;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-logo:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--warm-gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--warm-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .about-content,
+            .obj-outcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-time {
+                text-align: left !important;
+                padding: 0 0 1rem 0 !important;
+            }
+
+            .timeline-content {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 2rem !important;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">IISER Pune</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#register" class="cta-button">Register Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">National Conference</div>
+            <h1 class="hero-title">Indian Knowledge System:<br>Science and Technology</h1>
+            <p class="hero-tagline">"Study the Past to Define the Future"</p>
+            <div class="hero-details">
+                <div class="hero-detail">
+                    <span>📅</span>
+                    <span><strong>Date:</strong> March 07, 2026</span>
+                </div>
+                <div class="hero-detail">
+                    <span>📍</span>
+                    <span><strong>Venue:</strong> IISER Pune</span>
+                </div>
+            </div>
+            <a href="#register" class="hero-cta">Register Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About the Conference</h2>
+        <p class="section-subtitle">Bridging Ancient Wisdom with Modern Science</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>India (Bharat) has been known for its rich civilizational and cultural heritage. The great civilization of Bharat has been renowned from the west to the east of the world for millennia. Undoubtedly, Bharat is known for very rich scientific and technological knowledge that not only shaped India but also contributed to the growth of other parts of the world.</p>
+                
+                <p>The broad term Indian Knowledge System (IKS) encompasses Vedic sciences, spirituality, mathematics, astronomy, chemistry and metallurgy, Āyurveda, civil engineering, architecture, ship building, Artha shāstra, yoga, art, classical music and more. All these sub-disciplines thrived over millennia with numerous treatises that stand as testimony to the contributions of our great ancestors.</p>
+                
+                <p>The traditional knowledge with a holistic approach and newer scientific advancements with a reductionistic approach offer a great and valuable platform to build a resilient future for any nation. Reconnecting and revitalizing the Indian Knowledge Systems for the modern world is essential for building a sustainable and equitable world with a moral order.</p>
+            </div>
+            
+            <div class="about-highlight">
+                <h3>Our Vision</h3>
+                <p>This National Conference aims to provide a platform for interdisciplinary scientific dialogue by bridging ancient wisdom with modern science. We bring together scholars and enthusiastic students from different disciplines to encourage interest in this field and motivate exploration, research, and possible collaboration.</p>
+                <p style="margin-top: 1.5rem;">In alignment with the National Educational Policy (2020), we emphasize revisiting and integrating ancient Indian knowledge to revitalize and understand IKS with a modern scientific perspective.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Themes Section -->
+    <section id="themes" class="themes">
+        <h2 class="section-title">Conference Themes</h2>
+        <p class="section-subtitle">Exploring the Depths of Ancient Indian Scientific Knowledge</p>
+        
+        <div class="themes-grid">
+            <div class="theme-card">
+                <div class="theme-icon">🔭</div>
+                <h3>Astronomy and Mathematics</h3>
+                <p>Exploring ancient Indian contributions to astronomy, astronomical observations, mathematical principles, and their applications in understanding the cosmos and developing computational methods.</p>
+            </div>
+            
+            <div class="theme-card">
+                <div class="theme-icon">⚗️</div>
+                <h3>Metallurgy</h3>
+                <p>Metals in medicines and materials - investigating ancient Indian metallurgical practices, the use of metals in traditional medicine, and advanced material science from ancient texts.</p>
+            </div>
+            
+            <div class="theme-card">
+                <div class="theme-icon">🌿</div>
+                <h3>Āyurveda and Personal Medicine</h3>
+                <p>Understanding ancient Indian medical wisdom, personalized medicine approaches, herbal remedies, and their relevance to modern healthcare and wellness.</p>
+            </div>
+            
+            <div class="theme-card">
+                <div class="theme-icon">🏛️</div>
+                <h3>Architectural Wonder</h3>
+                <p>Ancient temple building technology - examining the engineering marvels, architectural principles, and construction techniques that created enduring structures.</p>
+            </div>
+            
+            <div class="theme-card">
+                <div class="theme-icon">📜</div>
+                <h3>Scientific Language and Grammar</h3>
+                <p>Evolution of scientific Indian language and grammar - studying how ancient languages facilitated the documentation and transmission of scientific knowledge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="objectives">
+        <h2 class="section-title">Objectives & Expected Outcomes</h2>
+        
+        <div class="obj-outcome-grid">
+            <div class="obj-outcome-box">
+                <h3>Conference Objectives</h3>
+                <ul>
+                    <li>Explore India's scientific and technological heritage with proper citations and documentation</li>
+                    <li>Highlight ancient Indian mathematics, metallurgy, Āyurveda and their relevance in today's world</li>
+                    <li>Promote ancient Indian eco-friendly technology and sustainable living practices</li>
+                    <li>Bridge ancient Indian wisdom with modern science to foster innovation by combining traditional and contemporary scientific knowledge</li>
+                </ul>
+            </div>
+            
+            <div class="obj-outcome-box outcome">
+                <h3>Expected Outcomes</h3>
+                <ul>
+                    <li>Inspire young scientific minds to pursue research in ancient Indian knowledge systems</li>
+                    <li>Provide guidance on how to approach IKS and study the innumerable texts available</li>
+                    <li>Enhance interest among the scientific audience to invest time in conducting research on IKS with modern scientific understanding</li>
+                    <li>Instill a sense of pride in our ancient knowledge systems and ancestors, building stronger and prouder citizens</li>
+                    <li>Strengthen traditional IKS on a global level through rigorous academic inquiry</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <h2 class="section-title">Conference Schedule</h2>
+        <p class="section-subtitle">March 07, 2026 - Full Day Program</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">09:00 AM</div>
+                <div class="timeline-content">
+                    <h4>Inauguration & Lamp Lighting</h4>
+                    <p>Traditional lamp lighting ceremony and inaugural address by distinguished guests</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 AM</div>
+                <div class="timeline-content">
+                    <h4>Keynote Address</h4>
+                    <p>Opening keynote by distinguished scholar (To be announced)</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">11:30 AM</div>
+                <div class="timeline-content">
+                    <h4>Technical Session I</h4>
+                    <p>Themes: Mathematics & Astronomy - Ancient computational methods and astronomical observations</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">01:00 PM</div>
+                <div class="timeline-content">
+                    <h4>Lunch Break</h4>
+                    <p>Networking and refreshments</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">02:00 PM</div>
+                <div class="timeline-content">
+                    <h4>Technical Session II</h4>
+                    <p>Themes: Āyurveda & Metallurgy - Traditional medicine and ancient material science</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">04:00 PM</div>
+                <div class="timeline-content">
+                    <h4>Panel Discussion</h4>
+                    <p>"Bridging the Gap: Integrating Ancient Wisdom with Modern Science"</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership">
+        <h2 class="section-title">Conference Leadership</h2>
+        <p class="section-subtitle">Distinguished Patrons and Organizers</p>
+        
+        <div class="leadership-grid">
+            <div class="leader-card">
+                <div class="leader-role">Chief Patron</div>
+                <div class="leader-name">Shri Madabhushi Madan Gopal</div>
+                <div class="leader-title">Retired IAS Officer<br>Chairperson, Board of Governors<br>IISER Pune</div>
+            </div>
+            
+            <div class="leader-card">
+                <div class="leader-role">Patron</div>
+                <div class="leader-name">Prof. Sunil S. Bhagwat</div>
+                <div class="leader-title">Director<br>IISER Pune</div>
+            </div>
+            
+            <div class="leader-card">
+                <div class="leader-role">Convenor</div>
+                <div class="leader-name">Prof. Ramakrishna Bhat</div>
+                <div class="leader-title">Faculty Member<br>IISER Pune</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="speakers">
+        <h2 class="section-title">Distinguished Speakers</h2>
+        <p class="section-subtitle">Expert voices from across disciplines (To be announced)</p>
+        
+        <div class="speakers-grid">
+            <div class="speaker-card">
+                <div class="speaker-image">👤</div>
+                <div class="speaker-info">
+                    <h4>To Be Announced</h4>
+                    <p>Distinguished Scholar in Ancient Indian Mathematics</p>
+                </div>
+            </div>
+            
+            <div class="speaker-card">
+                <div class="speaker-image">👤</div>
+                <div class="speaker-info">
+                    <h4>To Be Announced</h4>
+                    <p>Expert in Traditional Metallurgy & Material Science</p>
+                </div>
+            </div>
+            
+            <div class="speaker-card">
+                <div class="speaker-image">👤</div>
+                <div class="speaker-info">
+                    <h4>To Be Announced</h4>
+                    <p>Renowned Researcher in Āyurveda & Modern Medicine</p>
+                </div>
+            </div>
+            
+            <div class="speaker-card">
+                <div class="speaker-image">👤</div>
+                <div class="speaker-info">
+                    <h4>To Be Announced</h4>
+                    <p>Specialist in Ancient Architecture & Engineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz">
+        <h2 class="section-title">Test Your Knowledge</h2>
+        <p>Participate in our Pre-Conference Quiz on Ancient Indian Science and Technology!</p>
+        <p style="font-size: 1.1rem; margin-top: 1rem; opacity: 0.9;">Challenge yourself and discover fascinating facts about India's scientific heritage</p>
+        <a href="#quiz-form" class="quiz-button">Take the Quiz</a>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors">
+        <h2 class="section-title">Sponsors & Partners</h2>
+        <p class="section-subtitle">Supporting Excellence in Scientific Research</p>
+        
+        <div class="sponsors-grid">
+            <div class="sponsor-logo">Partner Logo 1</div>
+            <div class="sponsor-logo">Partner Logo 2</div>
+            <div class="sponsor-logo">Partner Logo 3</div>
+            <div class="sponsor-logo">Partner Logo 4</div>
+        </div>
+        
+        <p style="margin-top: 3rem; font-size: 1.1rem; color: var(--charcoal);">
+            Interested in partnering with us? <a href="#contact" style="color: var(--terracotta); text-decoration: underline;">Get in touch</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>Indian Institute of Science Education and Research (IISER) Pune</p>
+                <p>Dr. Homi Bhabha Road</p>
+                <p>Pune, Maharashtra 411008</p>
+                <p style="margin-top: 1rem;">Email: conference@iiserpune.ac.in</p>
+                <p>Phone: +91 (020) XXXX XXXX</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#register">Registration</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#themes">Conference Themes</a>
+                <a href="#">Download Brochure (PDF)</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Important Dates</h3>
+                <p><strong>Conference Date:</strong> March 07, 2026</p>
+                <p><strong>Last Date for Registration:</strong> TBA</p>
+                <p><strong>Abstract Submission:</strong> TBA</p>
+                <p style="margin-top: 1.5rem;"><strong>Who Can Attend:</strong></p>
+                <p>Academicians, faculty members, research scholars, undergraduate and postgraduate students interested in exploring ancient Indian science</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Indian Institute of Science Education and Research (IISER) Pune. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;">Designed for the National Conference on Indian Knowledge System: Science and Technology</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation to elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.theme-card, .speaker-card, .leader-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
