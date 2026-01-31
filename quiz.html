@@ -1,107 +1,595 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Ancient Indian Science & Technology Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f4ef;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #12326b;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    .question h3 {
-      margin-bottom: 10px;
-    }
-    label {
-      display: block;
-      margin: 6px 0;
-      cursor: pointer;
-    }
-    button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: #d65a3a;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #b9482c;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      text-align: center;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quiz — Ancient Indian Science & Technology</title>
+<style>
+  :root{
+    --brand:#c95b43;
+    --navy:#083058;
+    --bg:#fbf7f3;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --radius:12px;
+    --maxw:900px;
+  }
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,var(--bg),#fff); color:#0b1220}
+  .wrap{max-width:var(--maxw);margin:28px auto;padding:28px;}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+  .logo{background:var(--navy);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+  h1{font-size:28px;margin:0}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 22px rgba(10,20,30,0.06);padding:22px;margin-bottom:18px}
+  .section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}
+  .section-title h2{margin:0;font-size:18px;color:var(--navy)}
+  .muted{color:var(--muted);font-size:13px}
+  label{display:block;font-weight:600;margin-bottom:8px}
+  input[type="text"], input[type="email"], select, textarea{
+    width:100%;padding:10px 12px;border-radius:8px;border:1px solid #e6e6e9;font-size:14px;box-sizing:border-box
+  }
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .question{margin-bottom:18px}
+  .q-title{font-weight:700;margin-bottom:8px}
+  .options{display:flex;flex-direction:column;gap:8px}
+  .opt label{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;border:1px solid #f0f0f2}
+  .btn{
+    display:inline-block;padding:12px 20px;border-radius:999px;background:var(--brand);color:white;border:0;font-weight:700;cursor:pointer;
+    box-shadow:0 8px 20px rgba(201,91,67,0.18)
+  }
+  .btn.secondary{background:#eef2ff;color:var(--navy);box-shadow:none;border:1px solid rgba(8,48,88,0.06)}
+  .progress{height:8px;background:#f2f4f7;border-radius:8px;overflow:hidden;margin-bottom:16px}
+  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#e67b5f);width:0%}
+  .result{padding:16px;border-radius:10px;background:linear-gradient(90deg,#eef8f8,#fbfbff);border:1px solid #eef2f4}
+  .small{font-size:13px;color:var(--muted)}
+  footer{margin-top:8px;text-align:center;color:var(--muted);font-size:13px}
+  @media (max-width:720px){.row{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start} .wrap{padding:16px}}
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Ancient Indian Science & Technology Quiz</h1>
+<div class="wrap">
+  <header>
+    <div class="logo">IISER Pune</div>
+    <div>
+      <h1>Pre-conference Quiz — Ancient Indian Science & Technology</h1>
+      <div class="small">Time limit: none • Total: 100 points</div>
+    </div>
+  </header>
 
-    <form id="quizForm">
+  <!-- Participant details -->
+  <form id="quizForm" class="card" autocomplete="off" novalidate>
+    <div class="section-title">
+      <h2>Section 1 — Participant Details</h2>
+      <div class="muted">(All fields required)</div>
+    </div>
 
-      <div class="question">
-        <h3>1. Which text describes ancient Indian surgical techniques?</h3>
-        <label><input type="radio" name="q1" value="0"> Charaka Samhita</label>
-        <label><input type="radio" name="q1" value="1"> Sushruta Samhita</label>
-        <label><input type="radio" name="q1" value="0"> Rigveda</label>
+    <div class="row" style="margin-bottom:14px">
+      <div>
+        <label for="fullname">Full Name</label>
+        <input id="fullname" name="fullname" type="text" required />
+      </div>
+      <div>
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom:16px">
+      <div>
+        <label for="institution">Institution / Organization</label>
+        <input id="institution" name="institution" type="text" required />
+      </div>
+      <div>
+        <label for="designation">Designation</label>
+        <select id="designation" name="designation" required>
+          <option value="">Select</option>
+          <option>Student</option>
+          <option>Faculty</option>
+          <option>Researcher</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="section-title" style="margin-top:8px">
+      <h2>Section 2 — The Quiz</h2>
+      <div class="muted">Answer the questions. Correct answers are scored in the answer key.</div>
+    </div>
+
+    <div class="progress" aria-hidden><i id="progressBar"></i></div>
+
+    <div id="questions">
+
+      <!-- Q1 -->
+      <div class="question card" data-q="1" data-points="5">
+        <div class="q-title">1. Which ancient Indian text contains early descriptions of surgical techniques and instruments? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q1" value="Sushruta Samhita" required> Sushruta Samhita</label></div>
+          <div class="opt"><label><input type="radio" name="q1" value="Charaka Samhita"> Charaka Samhita</label></div>
+          <div class="opt"><label><input type="radio" name="q1" value="Arthashastra"> Arthashastra</label></div>
+          <div class="opt"><label><input type="radio" name="q1" value="Rigveda"> Rigveda</label></div>
+        </div>
       </div>
 
-      <div class="question">
-        <h3>2. Who calculated an approximation of π?</h3>
-        <label><input type="radio" name="q2" value="1"> Aryabhata</label>
-        <label><input type="radio" name="q2" value="0"> Kautilya</label>
-        <label><input type="radio" name="q2" value="0"> Charaka</label>
+      <!-- Q2 -->
+      <div class="question card" data-q="2" data-points="5">
+        <div class="q-title">2. Which ancient Indian scholar is credited with calculating an approximation of π (pi) and describing the concept of zero as a number? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q2" value="Aryabhata" required> Aryabhata</label></div>
+          <div class="opt"><label><input type="radio" name="q2" value="Bhaskara I"> Bhaskara I</label></div>
+          <div class="opt"><label><input type="radio" name="q2" value="Brahmagupta"> Brahmagupta</label></div>
+          <div class="opt"><label><input type="radio" name="q2" value="Varahamihira"> Varahamihira</label></div>
+        </div>
       </div>
 
-      <div class="question">
-        <h3>3. The Iron Pillar of Delhi is famous for?</h3>
-        <label><input type="radio" name="q3" value="1"> Rust resistance</label>
-        <label><input type="radio" name="q3" value="0"> Aluminum alloy</label>
-        <label><input type="radio" name="q3" value="0"> Roman design</label>
+      <!-- Q3 -->
+      <div class="question card" data-q="3" data-points="5">
+        <div class="q-title">3. The Iron Pillar of Delhi is notable for which scientific/technological reason? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q3" value="earliest cast iron"> It is the earliest known use of cast iron.</label></div>
+          <div class="opt"><label><input type="radio" name="q3" value="corrosion resistant" required> It demonstrates advanced rust-resistant (corrosion-resistant) metallurgy.</label></div>
+          <div class="opt"><label><input type="radio" name="q3" value="aluminum alloy"> It contains an early alloy of aluminum.</label></div>
+          <div class="opt"><label><input type="radio" name="q3" value="astronomical use"> It was used as an astronomical instrument.</label></div>
+        </div>
       </div>
 
-      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
-    </form>
+      <!-- Q4 -->
+      <div class="question card" data-q="4" data-points="5">
+        <div class="q-title">4. Which ancient Indian physician introduced systematic classifications of diseases and wrote the Charaka Samhita? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q4" value="Sushruta" required> Sushruta</label></div>
+          <div class="opt"><label><input type="radio" name="q4" value="Charaka"> Charaka</label></div>
+          <div class="opt"><label><input type="radio" name="q4" value="Dhanvantari"> Dhanvantari</label></div>
+          <div class="opt"><label><input type="radio" name="q4" value="Nagarjuna"> Nagarjuna</label></div>
+        </div>
+      </div>
 
-    <div id="result"></div>
+      <!-- Q5 -->
+      <div class="question card" data-q="5" data-points="5">
+        <div class="q-title">5. The ancient university of Nalanda (5th–12th century CE) was primarily known for teaching which subjects? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q5" value="only Buddhist" required> Only Buddhist scriptures</label></div>
+          <div class="opt"><label><input type="radio" name="q5" value="wide range"> A wide range including logic, astronomy, medicine, and grammar</label></div>
+          <div class="opt"><label><input type="radio" name="q5" value="only medicine"> Only medicine and surgery</label></div>
+          <div class="opt"><label><input type="radio" name="q5" value="only math"> Only mathematics and astronomy</label></div>
+        </div>
+      </div>
+
+      <!-- Q6 (checkboxes) -->
+      <div class="question card" data-q="6" data-points="6">
+        <div class="q-title">6. Which of the following are contributions from ancient/medieval India to mathematics and astronomy? <span class="small">Select all that apply. (6 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="checkbox" name="q6" value="decimal"> Decimal place-value system</label></div>
+          <div class="opt"><label><input type="checkbox" name="q6" value="negative"> Negative numbers</label></div>
+          <div class="opt"><label><input type="checkbox" name="q6" value="sine"> Trigonometric sine table</label></div>
+          <div class="opt"><label><input type="checkbox" name="q6" value="zero"> Concept of zero as a numeral</label></div>
+        </div>
+      </div>
+
+      <!-- Q7 short answer -->
+      <div class="question card" data-q="7" data-points="6">
+        <div class="q-title">7. Name an ancient Indian text considered one of the earliest works on civil engineering and urban planning (e.g., drainage and water supply systems). <span class="small">(6 pts)</span></div>
+        <div><input id="q7" name="q7" type="text" placeholder="Type your answer (e.g., Shilpa Shastra)" /></div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="question card" data-q="8" data-points="5">
+        <div class="q-title">8. Which metallurgical achievement is associated with ancient India’s Wootz steel? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q8" value="crucible" required> Early high-carbon crucible steel used for superior blades</label></div>
+          <div class="opt"><label><input type="radio" name="q8" value="electric"> Steel produced by electric arc</label></div>
+          <div class="opt"><label><input type="radio" name="q8" value="wrought"> Low-carbon wrought iron only</label></div>
+          <div class="opt"><label><input type="radio" name="q8" value="bronze"> Bronze casting techniques</label></div>
+        </div>
+      </div>
+
+      <!-- Q9 true/false -->
+      <div class="question card" data-q="9" data-points="4">
+        <div class="q-title">9. The Sulba Sutras contain geometric rules used for altar construction and include approximations of square roots. <span class="small"> (True / False) (4 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q9" value="True" required> True</label></div>
+          <div class="opt"><label><input type="radio" name="q9" value="False"> False</label></div>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="question card" data-q="10" data-points="5">
+        <div class="q-title">10. Who wrote the astronomical work 'Surya Siddhanta' (in its later Sanskrit form) that influenced Indian astronomy? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q10" value="Varahamihira" required> Varahamihira</label></div>
+          <div class="opt"><label><input type="radio" name="q10" value="Charaka"> Charaka</label></div>
+          <div class="opt"><label><input type="radio" name="q10" value="Nagarjuna"> Nagarjuna</label></div>
+          <div class="opt"><label><input type="radio" name="q10" value="Kautilya"> Kautilya</label></div>
+        </div>
+      </div>
+
+      <!-- Q11 matching (implemented as selects) -->
+      <div class="question card" data-q="11" data-points="10">
+        <div class="q-title">11. Match each scholar/term with their field or contribution. (10 pts — 2 points each)</div>
+        <div class="small" style="margin-bottom:8px">Choose the best match for each person.</div>
+
+        <div style="display:grid;gap:10px">
+          <div>
+            <label>1. Aryabhata</label>
+            <select name="q11_1" required>
+              <option value="">Select</option>
+              <option value="A">Rules on polity, statecraft, and economic administration</option>
+              <option value="B">Systematic surgery and surgical instruments</option>
+              <option value="C">Rules for arithmetic including zero and negative numbers</option>
+              <option value="D">Early work on astronomy and mathematics (including Aryabhatiya)</option>
+              <option value="E">Foundational text on internal medicine</option>
+            </select>
+          </div>
+
+          <div>
+            <label>2. Sushruta</label>
+            <select name="q11_2" required>
+              <option value="">Select</option>
+              <option value="A">Rules on polity, statecraft, and economic administration</option>
+              <option value="B">Systematic surgery and surgical instruments</option>
+              <option value="C">Rules for arithmetic including zero and negative numbers</option>
+              <option value="D">Early work on astronomy and mathematics (including Aryabhatiya)</option>
+              <option value="E">Foundational text on internal medicine</option>
+            </select>
+          </div>
+
+          <div>
+            <label>3. Brahmagupta</label>
+            <select name="q11_3" required>
+              <option value="">Select</option>
+              <option value="A">Rules on polity, statecraft, and economic administration</option>
+              <option value="B">Systematic surgery and surgical instruments</option>
+              <option value="C">Rules for arithmetic including zero and negative numbers</option>
+              <option value="D">Early work on astronomy and mathematics (including Aryabhatiya)</option>
+              <option value="E">Foundational text on internal medicine</option>
+            </select>
+          </div>
+
+          <div>
+            <label>4. Charaka</label>
+            <select name="q11_4" required>
+              <option value="">Select</option>
+              <option value="A">Rules on polity, statecraft, and economic administration</option>
+              <option value="B">Systematic surgery and surgical instruments</option>
+              <option value="C">Rules for arithmetic including zero and negative numbers</option>
+              <option value="D">Early work on astronomy and mathematics (including Aryabhatiya)</option>
+              <option value="E">Foundational text on internal medicine</option>
+            </select>
+          </div>
+
+          <div>
+            <label>5. Kautilya (Arthashastra)</label>
+            <select name="q11_5" required>
+              <option value="">Select</option>
+              <option value="A">Rules on polity, statecraft, and economic administration</option>
+              <option value="B">Systematic surgery and surgical instruments</option>
+              <option value="C">Rules for arithmetic including zero and negative numbers</option>
+              <option value="D">Early work on astronomy and mathematics (including Aryabhatiya)</option>
+              <option value="E">Foundational text on internal medicine</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="question card" data-q="12" data-points="5">
+        <div class="q-title">12. Which system detailed methods for irrigation, reservoirs, and water management such as stepwells (baolis)? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q12" value="indus-harappan" required> Hydraulic engineering traditions in the Indus Valley and later regional practices</label></div>
+          <div class="opt"><label><input type="radio" name="q12" value="greek"> Only Greek-influenced irrigation</label></div>
+          <div class="opt"><label><input type="radio" name="q12" value="roman"> Roman techniques imported</label></div>
+          <div class="opt"><label><input type="radio" name="q12" value="polynesian"> Polynesian methods</label></div>
+        </div>
+      </div>
+
+      <!-- Q13 -->
+      <div class="question card" data-q="13" data-points="5">
+        <div class="q-title">13. The medical method involving systematic observation, diagnosis, prognosis, and treatment is a key feature of which ancient Indian medical system? <span class="small"> (5 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q13" value="Ayurveda" required> Ayurveda</label></div>
+          <div class="opt"><label><input type="radio" name="q13" value="Homeopathy"> Homeopathy</label></div>
+          <div class="opt"><label><input type="radio" name="q13" value="Unani"> Unani</label></div>
+          <div class="opt"><label><input type="radio" name="q13" value="Siddha"> Siddha</label></div>
+        </div>
+      </div>
+
+      <!-- Q14 short answer -->
+      <div class="question card" data-q="14" data-points="6">
+        <div class="q-title">14. Give one example of an ancient Indian invention or technique related to textiles or dyes (e.g., a fabric, dyeing technique, or loom technology). <span class="small"> (6 pts)</span></div>
+        <div><input id="q14" name="q14" type="text" placeholder="E.g., block printing, indigo dyeing, ikat" /></div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="question card" data-q="15" data-points="10">
+        <div class="q-title">15. Which of the following best explains why ancient Indian astronomers developed detailed mathematical methods? <span class="small"> (10 pts)</span></div>
+        <div class="options">
+          <div class="opt"><label><input type="radio" name="q15" value="ritual" required> For ritual and calendrical accuracy (timing sacrifices, festivals)</label></div>
+          <div class="opt"><label><input type="radio" name="q15" value="navigation"> Purely for navigation</label></div>
+          <div class="opt"><label><input type="radio" name="q15" value="taxes"> To calculate taxes only</label></div>
+          <div class="opt"><label><input type="radio" name="q15" value="entertainment"> As a form of entertainment</label></div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div style="display:flex;gap:12px;align-items:center">
+        <button id="submitBtn" class="btn" type="button">Submit & Get Score</button>
+        <button id="resetBtn" class="btn secondary" type="button">Reset</button>
+        <div class="small" style="margin-left:auto">Total: 100 pts</div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Result area -->
+  <div id="resultArea" class="card" style="display:none;margin-top:18px"></div>
+
+  <!-- Conclusion / confirmation -->
+  <div id="conclusion" class="card" style="display:none;margin-top:12px">
+    <h2>Thank you for participating!</h2>
+    <p class="small">Great job! We hope this sparked your interest in the vast scientific heritage of India.</p>
+    <p class="small">Want to learn more? Join us at the <strong>National Conference on IKS at IISER Pune</strong> on <strong>07th March 2026</strong>.</p>
+    <p><a id="registerLink" class="btn" href="#" target="_blank">Register for the Conference</a></p>
+    <div style="margin-top:8px">
+      <p class="small">Scan QR to register:</p>
+      <!-- Placeholder QR: replace src with your QR image path -->
+      <img id="qrImage" src="" alt="QR code placeholder" style="width:160px;border-radius:8px;border:1px solid #eef2f4" />
+    </div>
   </div>
 
-  <script>
-    function submitQuiz() {
-      let score = 0;
-      const form = document.getElementById("quizForm");
-      const answers = form.querySelectorAll("input[type=radio]:checked");
+  <footer class="small">If you want the form to email results or store responses, I can supply deployment options (Firebase, Supabase, or Google Sheets script).</footer>
+</div>
 
-      answers.forEach(ans => score += Number(ans.value));
+<script>
+/*
+  Answer key & scoring logic
+  Points: Q1:5 Q2:5 Q3:5 Q4:5 Q5:5 Q6:6 Q7:6 Q8:5 Q9:4 Q10:5 Q11:10 Q12:5 Q13:5 Q14:6 Q15:10
+*/
+const KEY = {
+  q1: "Sushruta Samhita",
+  q2: "Aryabhata",
+  q3: "corrosion resistant",
+  q4: "Charaka",
+  q5: "wide range",
+  q6: { correct: ["decimal","sine","zero"] }, // three correct values
+  q7_accept: ["shilpa shastra","manasollasa","shilpa","manasollasa","shilpa-shastra"], // keywords acceptable
+  q8: "crucible",
+  q9: "True",
+  q10: "Varahamihira",
+  q11: { // expects values A-E
+    1: "D", // Aryabhata -> D
+    2: "B", // Sushruta -> B
+    3: "C", // Brahmagupta -> C
+    4: "E", // Charaka -> E
+    5: "A"  // Kautilya -> A
+  },
+  q12: "indus-harappan",
+  q13: "Ayurveda",
+  q14_accept: ["ikat","block printing","kalamkari","indigo","indigo dye","natural indigo","block-printing","kalamkari"],
+  q15: "ritual"
+};
 
-      document.getElementById("result").innerText =
-        "Your Score: " + score + " / 3";
+const pointsMap = {
+  1:5,2:5,3:5,4:5,5:5,6:6,7:6,8:5,9:4,10:5,11:10,12:5,13:5,14:6,15:10
+};
+
+const form = document.getElementById('quizForm');
+const submitBtn = document.getElementById('submitBtn');
+const resetBtn = document.getElementById('resetBtn');
+const progressBar = document.getElementById('progressBar');
+const resultArea = document.getElementById('resultArea');
+const conclusion = document.getElementById('conclusion');
+const qrImage = document.getElementById('qrImage');
+const registerLink = document.getElementById('registerLink');
+
+// Replace these with your registration link / QR image path
+registerLink.href = "https://your-registration-link.example";
+qrImage.src = ""; // leave empty or set to "assets/qr.png"
+
+function validateParticipant(){
+  const fullname = document.getElementById('fullname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const inst  = document.getElementById('institution').value.trim();
+  const desig = document.getElementById('designation').value;
+  if(!fullname || !email || !inst || !desig) return false;
+  return true;
+}
+
+function updateProgress(){
+  // percent of answered required questions (question blocks with required inputs)
+  const qBlocks = document.querySelectorAll('[data-q]');
+  let answered = 0;
+  qBlocks.forEach(q=>{
+    const name = 'q'+q.dataset.q;
+    const inputs = q.querySelectorAll('input, select, textarea');
+    let ok = false;
+    inputs.forEach(inp=>{
+      if((inp.type==='radio' || inp.type==='checkbox') && inp.checked) ok = true;
+      if(inp.tagName === 'INPUT' && (inp.type==='text' || inp.type==='email') && inp.value.trim()!=='') ok = true;
+      if(inp.tagName === 'SELECT' && inp.value!=='') ok = true;
+    });
+    if(ok) answered++;
+  });
+  const pct = Math.round((answered / qBlocks.length) * 100);
+  progressBar.style.width = pct + '%';
+}
+
+document.querySelectorAll('input, select').forEach(i=>{
+  i.addEventListener('change', updateProgress);
+});
+document.getElementById('q7')?.addEventListener('input', updateProgress);
+document.getElementById('q14')?.addEventListener('input', updateProgress);
+
+function scoreForm(){
+  let total = 0;
+  let details = [];
+
+  // helpers
+  function addDetail(q, pts, max, correct, got){
+    details.push({q, pts, max, correct, got});
+  }
+
+  // Q1..Q5 straightforward radios
+  for(let i=1;i<=5;i++){
+    const name = 'q'+i;
+    const el = form.elements[name];
+    const ans = el ? (el.value || '') : '';
+    const correct = KEY[name];
+    const pts = pointsMap[i];
+    if(ans && ans === correct){
+      total += pts; addDetail(i, pts, pts, correct, ans);
+    } else {
+      addDetail(i, 0, pts, correct, ans || null);
     }
-  </script>
+  }
+
+  // Q6 checkboxes (6 points)
+  const q6boxes = Array.from(form.querySelectorAll('input[name="q6"]'));
+  const selected = q6boxes.filter(b=>b.checked).map(b=>b.value);
+  const q6Correct = KEY.q6.correct; // ["decimal","sine","zero"]
+  const numCorrect = q6Correct.length;
+  let correctSelected = selected.filter(s=>q6Correct.includes(s)).length;
+  let incorrectSelected = selected.filter(s=>!q6Correct.includes(s)).length;
+  // score proportional: (correctSelected - incorrectSelected)/numCorrect * maxPoints, clamp >=0
+  let q6Score = Math.max(0, (correctSelected - incorrectSelected) / numCorrect * pointsMap[6]);
+  // round to 2 decimals
+  q6Score = Math.round(q6Score * 100) / 100;
+  total += q6Score;
+  addDetail(6, q6Score, pointsMap[6], q6Correct.join(', '), selected.join(', ') || null);
+
+  // Q7 short answer (6 points)
+  const q7Ans = (form.elements['q7'].value || '').trim().toLowerCase();
+  let q7OK = false;
+  if(q7Ans.length>0){
+    for(const kw of KEY.q7_accept){
+      if(q7Ans.includes(kw)) { q7OK = true; break; }
+    }
+  }
+  if(q7OK){ total += pointsMap[7]; addDetail(7, pointsMap[7], pointsMap[7], 'Shilpa Shastra / Manasollasa / similar', form.elements['q7'].value); }
+  else addDetail(7, 0, pointsMap[7], 'Shilpa Shastra / Manasollasa / similar', form.elements['q7'].value || null);
+
+  // Q8
+  { const ans = form.elements['q8'].value || ''; if(ans === KEY.q8){ total += pointsMap[8]; addDetail(8, pointsMap[8], pointsMap[8], KEY.q8, ans); } else addDetail(8,0,pointsMap[8],KEY.q8,ans||null); }
+
+  // Q9
+  { const ans = form.elements['q9'].value || ''; if(ans === KEY.q9){ total += pointsMap[9]; addDetail(9, pointsMap[9], pointsMap[9], KEY.q9, ans); } else addDetail(9,0,pointsMap[9],KEY.q9,ans||null); }
+
+  // Q10
+  { const ans = form.elements['q10'].value || ''; if(ans === KEY.q10){ total += pointsMap[10]; addDetail(10, pointsMap[10], pointsMap[10], KEY.q10, ans); } else addDetail(10,0,pointsMap[10],KEY.q10,ans||null); }
+
+  // Q11 matching (10 points -> 2 points each)
+  let q11Score = 0;
+  for(let i=1;i<=5;i++){
+    const val = form.elements['q11_'+i].value || '';
+    const correct = KEY.q11[i];
+    if(val === correct){ q11Score += pointsMap[11] / 5; }
+  }
+  q11Score = Math.round(q11Score * 100) / 100;
+  total += q11Score;
+  addDetail(11, q11Score, pointsMap[11], 'Pairs: 1-D,2-B,3-C,4-E,5-A', null);
+
+  // Q12
+  { const ans = form.elements['q12'].value || ''; if(ans === KEY.q12){ total += pointsMap[12]; addDetail(12, pointsMap[12], pointsMap[12], KEY.q12, ans); } else addDetail(12,0,pointsMap[12],KEY.q12,ans||null); }
+
+  // Q13
+  { const ans = form.elements['q13'].value || ''; if(ans === KEY.q13){ total += pointsMap[13]; addDetail(13, pointsMap[13], pointsMap[13], KEY.q13, ans); } else addDetail(13,0,pointsMap[13],KEY.q13,ans||null); }
+
+  // Q14 short answer (6 pts)
+  const q14Ans = (form.elements['q14'].value || '').trim().toLowerCase();
+  let q14OK = false;
+  for(const kw of KEY.q14_accept){
+    if(q14Ans.includes(kw)) { q14OK = true; break; }
+  }
+  if(q14OK){ total += pointsMap[14]; addDetail(14, pointsMap[14], pointsMap[14], 'Examples: ikat, block printing, indigo, kalamkari', form.elements['q14'].value); }
+  else addDetail(14,0,pointsMap[14],'Examples: ikat, block printing, indigo, kalamkari', form.elements['q14'].value||null);
+
+  // Q15
+  { const ans = form.elements['q15'].value || ''; if(ans === KEY.q15){ total += pointsMap[15]; addDetail(15, pointsMap[15], pointsMap[15], KEY.q15, ans); } else addDetail(15,0,pointsMap[15],KEY.q15,ans||null); }
+
+  // round total to 2 decimals if needed
+  total = Math.round(total * 100) / 100;
+
+  return { total, details };
+}
+
+function renderResult(scoreObj){
+  const { total, details } = scoreObj;
+  const name = document.getElementById('fullname').value.trim();
+  const inst = document.getElementById('institution').value.trim();
+  const designation = document.getElementById('designation').value;
+  resultArea.innerHTML = '';
+
+  const out = document.createElement('div');
+  out.className = 'result';
+
+  const header = document.createElement('div');
+  header.innerHTML = `<strong style="font-size:16px">Score: ${total} / 100</strong> — ${name ? (name + ' — ' + designation + ' @ ' + inst) : ''}`;
+  out.appendChild(header);
+
+  const detailList = document.createElement('div');
+  detailList.style.marginTop = '12px';
+  details.forEach(d=>{
+    const el = document.createElement('div');
+    el.style.marginBottom = '8px';
+    const qtext = `<div style="font-weight:700">Q${d.q} — ${d.pts}/${d.max} pts</div>`;
+    const answerText = `<div class="small">Correct answer(s): ${d.correct}</div>`;
+    const yourText = `<div class="small" style="color:${d.pts>0?'#0b7a5f':'#b02a2a'}">Your answer: ${d.got === null ? '<em>Not answered</em>' : d.got}</div>`;
+    el.innerHTML = qtext + answerText + yourText;
+    detailList.appendChild(el);
+  });
+  out.appendChild(detailList);
+
+  // short message / recommendation
+  const msg = document.createElement('div');
+  msg.style.marginTop = '12px';
+  msg.innerHTML = `<div class="small">You can use this result for conference participation. For certificates, or to store responses, connect this form to a backend (Firebase, Supabase, or Google Sheets script).</div>`;
+  out.appendChild(msg);
+
+  resultArea.appendChild(out);
+  resultArea.style.display = 'block';
+  conclusion.style.display = 'block';
+  // scroll to result
+  resultArea.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+submitBtn.addEventListener('click', ()=>{
+  // basic participant validation
+  if(!validateParticipant()){
+    alert('Please complete participant details (all fields required).');
+    return;
+  }
+
+  // ensure required quiz fields answered (radio/select)
+  const requiredInputs = document.querySelectorAll('[data-q] input[required], [data-q] select[required]');
+  for(const req of requiredInputs){
+    // For radio groups, check if any in that group checked
+    if(req.type === 'radio'){
+      const name = req.name;
+      const checked = form.querySelectorAll(`input[name="${name}"]:checked`);
+      if(checked.length === 0){
+        alert('Please answer all required questions before submitting.');
+        return;
+      }
+    }
+    if(req.tagName === 'SELECT' && req.value === ''){
+      alert('Please complete all required questions before submitting.');
+      return;
+    }
+  }
+
+  const scoreObj = scoreForm();
+  renderResult(scoreObj);
+});
+
+resetBtn.addEventListener('click', ()=>{
+  if(!confirm('Reset all answers?')) return;
+  form.reset();
+  resultArea.style.display = 'none';
+  conclusion.style.display = 'none';
+  updateProgress();
+});
+
+// initial progress
+updateProgress();
+</script>
 </body>
 </html>
+
