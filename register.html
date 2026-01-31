@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Register — National Conference on IKS</title>
+<style>
+  :root{
+    --brand:#c95b43;
+    --navy:#083058;
+    --bg:#fbf7f3;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --radius:12px;
+    --maxw:900px;
+  }
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, sans-serif; background:linear-gradient(180deg,var(--bg),#fff); color:#0b1220}
+  .wrap{max-width:var(--maxw);margin:40px auto;padding:20px;}
+  
+  /* Header */
+  header{text-align:center;margin-bottom:40px}
+  .badge{background:#eef2ff;color:var(--navy);padding:6px 12px;border-radius:99px;font-size:13px;font-weight:600;display:inline-block;margin-bottom:12px}
+  h1{font-size:32px;margin:0 0 10px 0;color:var(--navy)}
+  .subtitle{color:var(--muted);font-size:16px}
+
+  /* Grid Layout */
+  .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:start}
+  
+  /* Info Card (Left) */
+  .info-card{background:var(--navy);color:white;padding:30px;border-radius:var(--radius);position:relative;overflow:hidden}
+  .info-card h3{margin-top:0;font-size:20px}
+  .fee-list{list-style:none;padding:0;margin:20px 0}
+  .fee-list li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .fee-list li:last-child{border-bottom:0}
+  .fee-val{font-weight:700;color:#ffdac1}
+
+  /* Form Card (Right) */
+  .form-card{background:var(--card);padding:30px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,0.05);border:1px solid #eef2f4}
+  label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:var(--navy)}
+  input, select{width:100%;padding:12px;border-radius:8px;border:1px solid #d1d5db;font-size:15px;margin-bottom:16px;box-sizing:border-box}
+  input:focus, select:focus{outline:2px solid var(--brand);border-color:transparent}
+  
+  .total-box{background:#f9fafb;padding:16px;border-radius:8px;text-align:center;border:1px solid #e5e7eb;margin-bottom:20px}
+  .total-label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+  .total-price{font-size:28px;font-weight:800;color:var(--brand);margin-top:4px}
+
+  .btn{display:block;width:100%;padding:14px;border:0;background:var(--brand);color:white;font-weight:700;border-radius:8px;cursor:pointer;font-size:16px;transition:0.2s}
+  .btn:hover{background:#b2452d}
+
+  /* Success Message */
+  .success{display:none;text-align:center;padding:40px}
+  .success h2{color:var(--navy)}
+  
+  @media (max-width:768px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="badge">Registration Open</div>
+    <h1>National Conference on IKS</h1>
+    <div class="subtitle">IISER Pune • March 07, 2026</div>
+  </header>
+
+  <div class="grid" id="mainContent">
+    
+    <div class="info-card">
+      <h3>Conference Fees</h3>
+      <p style="opacity:0.8;font-size:14px;line-height:1.5">Includes access to all sessions, conference kit, lunch, and high tea.</p>
+      
+      <ul class="fee-list">
+        <li><span>Undergraduate / Masters</span> <span class="fee-val">₹200</span></li>
+        <li><span>PhD Scholars</span> <span class="fee-val">₹400</span></li>
+        <li><span>Faculty / Researchers</span> <span class="fee-val">₹600</span></li>
+      </ul>
+
+      <div style="margin-top:20px;font-size:13px;opacity:0.7">
+        * Please carry valid ID proof at the venue.
+      </div>
+    </div>
+
+    <form class="form-card" id="regForm">
+      <h2 style="margin-top:0;font-size:22px;color:var(--navy)">Participant Details</h2>
+      
+      <label>Full Name</label>
+      <input type="text" placeholder="Dr. / Mr. / Ms." required>
+
+      <label>Email Address</label>
+      <input type="email" placeholder="you@institution.edu" required>
+
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+91 99999 99999" required>
+
+      <label>Affiliation (Institute Name)</label>
+      <input type="text" required>
+
+      <label>Registration Category</label>
+      <select id="categorySelect" required>
+        <option value="" data-price="0">Select your category</option>
+        <option value="student" data-price="200">Student (UG/PG) — ₹200</option>
+        <option value="phd" data-price="400">PhD Scholar — ₹400</option>
+        <option value="faculty" data-price="600">Faculty / Professional — ₹600</option>
+      </select>
+
+      <div class="total-box">
+        <div class="total-label">Total Payable</div>
+        <div class="total-price" id="displayPrice">₹0</div>
+      </div>
+
+      <button type="submit" class="btn">Proceed to Pay</button>
+    </form>
+  </div>
+
+  <div class="form-card success" id="successMsg">
+    <div style="font-size:50px">🎉</div>
+    <h2>Registration Successful!</h2>
+    <p style="color:var(--muted)">Thank you for registering. We have sent the payment details to your email address.</p>
+    <a href="index.html" style="color:var(--brand);font-weight:600;text-decoration:none">Back to Home</a>
+  </div>
+
+</div>
+
+<script>
+  // 1. Update Price when Category changes
+  const categorySelect = document.getElementById('categorySelect');
+  const displayPrice = document.getElementById('displayPrice');
+
+  categorySelect.addEventListener('change', function(){
+    // Get the price from the selected option's "data-price" attribute
+    const price = this.options[this.selectedIndex].getAttribute('data-price');
+    displayPrice.textContent = '₹' + price;
+  });
+
+  // 2. Handle Form Submit (Simulation)
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault(); // Stop page refresh
+    
+    // In a real website, you would send data to a server here.
+    // For now, we hide the form and show the success message.
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
