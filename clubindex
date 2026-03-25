@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IISER Pune IKS Club | Indian Knowledge System</title>
+  <meta name="description" content="The IISER Pune Indian Knowledge System (IKS) Club — fostering scholarly dialogue at the intersection of ancient Indian wisdom and modern science.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #0e1a2b;
+      --ink-mid:    #1a2e4a;
+      --saffron:    #e8601c;
+      --saffron-lt: #f28c5e;
+      --gold:       #c9971a;
+      --gold-lt:    #f0c040;
+      --cream:      #fdf8f1;
+      --parchment:  #f5ece0;
+      --sand:       #e8d9c5;
+      --white:      #ffffff;
+      --text:       #2c2c2c;
+      --text-muted: #6b6355;
+      --border:     rgba(14,26,43,.10);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body {
+      font-family:'DM Sans', sans-serif;
+      color:var(--text);
+      background:var(--cream);
+      overflow-x:hidden;
+    }
+
+    /* ── SCROLLBAR ──────────────────────────────── */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--parchment); }
+    ::-webkit-scrollbar-thumb { background:var(--saffron); border-radius:3px; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position:fixed; top:0; width:100%; z-index:1000;
+      padding:0 0;
+      background:rgba(14,26,43,.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(201,151,26,.2);
+    }
+    .nav-inner {
+      max-width:1320px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 2.5rem; height:68px;
+    }
+    .logo {
+      display:flex; align-items:center; gap:.9rem;
+      text-decoration:none;
+    }
+    .logo img {
+      height:42px; width:42px; border-radius:50%; object-fit:cover;
+      border:2px solid rgba(201,151,26,.4);
+    }
+    .logo-name {
+      font-family:'EB Garamond', serif;
+      font-size:1.15rem; font-weight:600;
+      color:var(--white); line-height:1.2;
+    }
+    .logo-name small {
+      display:block;
+      font-family:'DM Sans', sans-serif;
+      font-size:.65rem; font-weight:400;
+      letter-spacing:2px; text-transform:uppercase;
+      color:rgba(255,255,255,.45); margin-top:1px;
+    }
+    .nav-links {
+      display:flex; gap:2rem; list-style:none; align-items:center;
+    }
+    .nav-links a {
+      color:rgba(255,255,255,.72); text-decoration:none;
+      font-size:.88rem; font-weight:500; letter-spacing:.3px;
+      transition:color .25s;
+    }
+    .nav-links a:hover { color:var(--gold-lt); }
+    .nav-cta {
+      background:var(--saffron) !important;
+      color:white !important;
+      padding:.5rem 1.4rem !important;
+      border-radius:4px !important;
+      font-weight:600 !important;
+      font-size:.85rem !important;
+      letter-spacing:.5px !important;
+      transition:opacity .2s !important;
+    }
+    .nav-cta:hover { opacity:.85 !important; }
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      cursor:pointer; background:none; border:none; padding:4px;
+    }
+    .hamburger span {
+      width:22px; height:2px; background:white;
+      border-radius:2px; transition:all .3s;
+    }
+
+    /* ── HERO ──────────────────────────────────────── */
+    #home {
+      min-height:100vh;
+      position:relative;
+      display:flex; align-items:center;
+      overflow:hidden;
+    }
+
+    /* Architectural SVG background */
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+      background:
+        linear-gradient(160deg, #0e1a2b 0%, #1e3060 40%, #3a1a08 100%);
+    }
+
+    /* Faux photo overlay — mimics the brick gate scene */
+    .hero-photo {
+      position:absolute; inset:0; z-index:1;
+      background:
+        url('image/IISERPunegate.webp') center 40%/cover no-repeat;
+      opacity:.35;
+      filter:saturate(0.6) contrast(1.1);
+    }
+
+    /* Warm tonal gradient on top */
+    .hero-wash {
+      position:absolute; inset:0; z-index:2;
+      background:
+        linear-gradient(160deg,
+          rgba(14,26,43,.88) 0%,
+          rgba(30,48,96,.72) 35%,
+          rgba(180,70,20,.55) 65%,
+          rgba(14,26,43,.82) 100%
+        );
+    }
+
+    /* Geometric mandala overlay */
+    .hero-geo {
+      position:absolute; inset:0; z-index:3;
+      pointer-events:none; overflow:hidden;
+    }
+    .hero-geo svg {
+      position:absolute;
+      opacity:.06;
+    }
+    .hero-geo svg.right {
+      right:-120px; top:50%; transform:translateY(-50%);
+      width:680px; height:680px;
+    }
+    .hero-geo svg.left {
+      left:-80px; bottom:-80px;
+      width:340px; height:340px; opacity:.04;
+    }
+
+    /* Noise grain */
+    .hero-grain {
+      position:absolute; inset:0; z-index:4;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity:.4; mix-blend-mode:overlay; pointer-events:none;
+    }
+
+    /* Horizontal rule accent */
+    .hero-rule {
+      position:absolute; bottom:0; left:0; right:0; z-index:5;
+      height:4px;
+      background:linear-gradient(90deg,
+        transparent 0%, var(--saffron) 20%, var(--gold) 50%, var(--saffron) 80%, transparent 100%
+      );
+    }
+
+    .hero-content {
+      position:relative; z-index:10;
+      max-width:1320px; margin:0 auto; padding:0 2.5rem;
+      padding-top:68px;
+      display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+      min-height:100vh;
+    }
+
+    .hero-left {}
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:.6rem;
+      font-size:.75rem; font-weight:600; letter-spacing:3px;
+      text-transform:uppercase; color:var(--gold-lt);
+      margin-bottom:1.8rem; opacity:0;
+      animation:fadeUp .9s ease .2s forwards;
+    }
+    .hero-eyebrow::before {
+      content:''; width:28px; height:1px; background:var(--gold-lt);
+    }
+    .hero-h1 {
+      font-family:'EB Garamond', serif;
+      font-size:clamp(3rem,5.5vw,5.2rem);
+      font-weight:700; color:white; line-height:1.06;
+      margin-bottom:1.5rem; letter-spacing:-.5px;
+      opacity:0; animation:fadeUp .9s ease .4s forwards;
+    }
+    .hero-h1 em {
+      color:var(--gold-lt); font-style:normal;
+      display:block;
+    }
+    .hero-tagline {
+      font-family:'EB Garamond', serif;
+      font-size:1.3rem; font-style:italic;
+      color:rgba(255,255,255,.75);
+      margin-bottom:2.5rem;
+      opacity:0; animation:fadeUp .9s ease .6s forwards;
+    }
+    .hero-pills {
+      display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:3rem;
+      opacity:0; animation:fadeUp .9s ease .8s forwards;
+    }
+    .pill {
+      font-size:.78rem; font-weight:500;
+      color:rgba(255,255,255,.8);
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.15);
+      padding:.45rem 1rem; border-radius:2px;
+      backdrop-filter:blur(4px);
+      letter-spacing:.3px;
+    }
+    .pill strong { color:var(--gold-lt); font-weight:600; }
+    .hero-actions {
+      display:flex; gap:1rem; flex-wrap:wrap;
+      opacity:0; animation:fadeUp .9s ease 1s forwards;
+    }
+    .btn-hero {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.9rem 2.2rem; border-radius:4px;
+      font-size:.92rem; font-weight:600; text-decoration:none;
+      letter-spacing:.3px; transition:all .25s;
+    }
+    .btn-hero.primary {
+      background:var(--saffron); color:white;
+      box-shadow:0 8px 28px rgba(232,96,28,.35);
+    }
+    .btn-hero.primary:hover {
+      background:#d05218; transform:translateY(-2px);
+      box-shadow:0 12px 32px rgba(232,96,28,.45);
+    }
+    .btn-hero.outline {
+      border:1.5px solid rgba(255,255,255,.35);
+      color:white;
+    }
+    .btn-hero.outline:hover {
+      border-color:var(--gold-lt); color:var(--gold-lt);
+    }
+
+    /* Right side — floating card */
+    .hero-card {
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(201,151,26,.25);
+      border-radius:8px;
+      padding:2.5rem;
+      backdrop-filter:blur(16px);
+      opacity:0; animation:fadeUp .9s ease .6s forwards;
+    }
+    .hero-card-label {
+      font-size:.7rem; font-weight:600; letter-spacing:3px;
+      text-transform:uppercase; color:var(--gold-lt);
+      margin-bottom:1.2rem;
+    }
+    .hero-stat-row {
+      display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;
+      margin-bottom:1.8rem;
+    }
+    .hero-stat {
+      padding:1.2rem; background:rgba(255,255,255,.06);
+      border-radius:4px; border:1px solid rgba(255,255,255,.08);
+      text-align:center;
+    }
+    .hero-stat .num {
+      font-family:'EB Garamond', serif;
+      font-size:2.4rem; font-weight:700;
+      color:var(--gold-lt); line-height:1;
+      display:block; margin-bottom:.3rem;
+    }
+    .hero-stat .lbl {
+      font-size:.72rem; color:rgba(255,255,255,.55);
+      line-height:1.3; display:block;
+    }
+    .hero-divider {
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(201,151,26,.3), transparent);
+      margin-bottom:1.5rem;
+    }
+    .hero-card-tagline {
+      font-family:'EB Garamond', serif;
+      font-size:1.1rem; font-style:italic;
+      color:rgba(255,255,255,.75);
+      line-height:1.7; margin-bottom:.8rem;
+    }
+    .hero-card-meta {
+      font-size:.78rem; color:rgba(255,255,255,.4);
+      letter-spacing:.5px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── STRIP ────────────────────────────────────── */
+    .strip {
+      background:var(--ink);
+      padding:0; overflow:hidden;
+    }
+    .strip-inner {
+      max-width:1320px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+    }
+    .strip-item {
+      padding:2.8rem 2rem;
+      text-align:center;
+      border-right:1px solid rgba(255,255,255,.06);
+      position:relative;
+    }
+    .strip-item:last-child { border-right:none; }
+    .strip-item::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:3px;
+      background:linear-gradient(90deg,var(--saffron),var(--gold));
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .4s ease;
+    }
+    .strip-item:hover::before { transform:scaleX(1); }
+    .strip-num {
+      font-family:'EB Garamond', serif;
+      font-size:3rem; font-weight:700; color:var(--gold-lt);
+      display:block; line-height:1;
+    }
+    .strip-lbl {
+      font-size:.8rem; color:rgba(255,255,255,.5);
+      margin-top:.5rem; letter-spacing:.5px;
+      display:block;
+    }
+
+    /* ── SECTION BASE ─────────────────────────────── */
+    section { padding:7rem 2.5rem; }
+    .section-inner { max-width:1320px; margin:0 auto; }
+    .section-tag {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.7rem; font-weight:600; letter-spacing:3px;
+      text-transform:uppercase; color:var(--saffron);
+      margin-bottom:.8rem;
+    }
+    .section-tag::before {
+      content:''; width:20px; height:1.5px; background:var(--saffron);
+    }
+    .section-h2 {
+      font-family:'EB Garamond', serif;
+      font-size:clamp(2rem,3.5vw,2.8rem);
+      font-weight:700; color:var(--ink);
+      line-height:1.15; margin-bottom:1rem;
+    }
+    .section-lead {
+      font-size:1.05rem; color:var(--text-muted);
+      max-width:600px; line-height:1.8;
+      margin-bottom:3.5rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity:1; transform:none; }
+    .reveal-d1 { transition-delay:.1s; }
+    .reveal-d2 { transition-delay:.2s; }
+    .reveal-d3 { transition-delay:.3s; }
+
+    /* ── ABOUT ──────────────────────────────────────── */
+    #about { background:white; }
+    .about-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;
+    }
+    .about-text p {
+      font-size:1.02rem; line-height:1.85; color:var(--text);
+      margin-bottom:1.3rem;
+    }
+    .about-text p:last-child { margin-bottom:0; }
+    .about-text strong { color:var(--ink); }
+    .about-aside {}
+    .vision-card {
+      background:var(--ink);
+      color:white; border-radius:6px; padding:2.5rem;
+      position:relative; overflow:hidden;
+      margin-bottom:1.5rem;
+    }
+    .vision-card::after {
+      content:''; position:absolute; top:-60%; right:-60%;
+      width:200%; height:200%;
+      background:radial-gradient(circle, rgba(201,151,26,.1) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .vision-card h3 {
+      font-family:'EB Garamond', serif; font-size:1.5rem;
+      color:var(--gold-lt); margin-bottom:1rem; position:relative; z-index:1;
+    }
+    .vision-card p {
+      font-size:.95rem; line-height:1.8; color:rgba(255,255,255,.78);
+      position:relative; z-index:1;
+    }
+    .vision-card p + p { margin-top:.9rem; }
+    .meta-tags {
+      display:flex; flex-wrap:wrap; gap:.6rem;
+    }
+    .meta-tag {
+      font-size:.75rem; font-weight:600; letter-spacing:.5px;
+      padding:.4rem .9rem; border-radius:3px;
+      background:var(--parchment); color:var(--saffron);
+      border:1px solid var(--sand);
+    }
+
+    /* ── PILLARS ──────────────────────────────────── */
+    #pillars { background:var(--cream); }
+    .pillars-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px;
+      background:var(--border); border:1.5px solid var(--border);
+      border-radius:8px; overflow:hidden;
+    }
+    .pillar {
+      background:white; padding:2.2rem 2rem;
+      transition:background .25s;
+      position:relative;
+    }
+    .pillar:hover { background:var(--ink); }
+    .pillar:hover .pillar-icon { color:var(--gold-lt); }
+    .pillar:hover h3 { color:white; }
+    .pillar:hover p { color:rgba(255,255,255,.65); }
+    .pillar-icon {
+      font-size:1.8rem; margin-bottom:1rem;
+      color:var(--saffron); transition:color .25s;
+    }
+    .pillar h3 {
+      font-family:'EB Garamond', serif; font-size:1.25rem;
+      color:var(--ink); margin-bottom:.6rem;
+      transition:color .25s;
+    }
+    .pillar p {
+      font-size:.88rem; line-height:1.7; color:var(--text-muted);
+      transition:color .25s;
+    }
+    .pillar-accent {
+      position:absolute; bottom:0; left:0;
+      width:100%; height:3px;
+      background:linear-gradient(90deg,var(--saffron),var(--gold));
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .3s;
+    }
+    .pillar:hover .pillar-accent { transform:scaleX(1); }
+
+    /* ── ACTIVITIES ───────────────────────────────── */
+    #activities { background:white; }
+    .activities-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;
+    }
+    .act-card {
+      border-radius:6px; overflow:hidden;
+      border:1.5px solid var(--border);
+      transition:all .3s;
+    }
+    .act-card:hover {
+      border-color:var(--saffron);
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(14,26,43,.08);
+    }
+    .act-top {
+      height:140px; display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .act-top.ink { background:var(--ink); }
+    .act-top.saffron {
+      background:linear-gradient(135deg,var(--saffron),#c04010);
+    }
+    .act-top.gold {
+      background:linear-gradient(135deg,#8a6010,var(--gold));
+    }
+    .act-top-icon { font-size:2.2rem; position:relative; z-index:1; }
+    .act-body { padding:1.8rem; }
+    .act-tag {
+      font-size:.65rem; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; color:var(--saffron);
+      margin-bottom:.7rem; display:block;
+    }
+    .act-body h3 {
+      font-family:'EB Garamond', serif; font-size:1.3rem;
+      color:var(--ink); margin-bottom:.6rem;
+    }
+    .act-body p {
+      font-size:.9rem; line-height:1.7; color:var(--text-muted);
+    }
+
+    /* ── TEAM ─────────────────────────────────────── */
+    #team { background:var(--parchment); }
+    .team-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:2rem;
+      max-width:760px;
+    }
+    .team-card {
+      background:white; border-radius:6px; padding:2rem;
+      border:1.5px solid var(--border);
+      display:flex; gap:1.2rem; align-items:flex-start;
+      transition:border-color .25s;
+    }
+    .team-card:hover { border-color:var(--saffron); }
+    .team-avatar {
+      width:52px; height:52px; border-radius:50%;
+      background:linear-gradient(135deg,var(--ink),var(--ink-mid));
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+      font-family:'EB Garamond', serif;
+      font-size:1.3rem; font-weight:700; color:var(--gold-lt);
+    }
+    .team-info h4 {
+      font-family:'EB Garamond', serif;
+      font-size:1.1rem; color:var(--ink); margin-bottom:.2rem;
+    }
+    .team-role {
+      font-size:.75rem; color:var(--saffron); font-weight:600;
+      letter-spacing:.5px; text-transform:uppercase;
+      display:block; margin-bottom:.4rem;
+    }
+    .team-dept {
+      font-size:.83rem; color:var(--text-muted); line-height:1.5;
+    }
+    .team-email {
+      font-size:.8rem; color:var(--saffron);
+      text-decoration:none; display:block; margin-top:.4rem;
+    }
+    .team-email:hover { text-decoration:underline; }
+
+    /* ── ARCHIVES ─────────────────────────────────── */
+    #archives {
+      background:var(--ink);
+      padding:7rem 2.5rem;
+      text-align:center;
+    }
+    #archives .section-tag { color:rgba(240,192,64,.7); }
+    #archives .section-tag::before { background:rgba(240,192,64,.7); }
+    #archives .section-h2 { color:white; margin:0 auto 1rem; }
+    #archives .section-lead { color:rgba(255,255,255,.6); margin:0 auto 3rem; }
+    .archive-row {
+      display:flex; justify-content:center; gap:1.5rem;
+      flex-wrap:wrap; margin-bottom:2.5rem;
+    }
+    .archive-card {
+      display:block; text-decoration:none;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(201,151,26,.3);
+      border-radius:6px; padding:2rem 3rem;
+      transition:all .3s; color:white;
+    }
+    .archive-card:hover {
+      background:rgba(201,151,26,.12);
+      border-color:var(--gold-lt);
+      transform:translateY(-4px);
+    }
+    .archive-yr {
+      font-family:'EB Garamond', serif;
+      font-size:2.8rem; font-weight:700;
+      color:var(--gold-lt); display:block; line-height:1;
+    }
+    .archive-sub {
+      font-size:.75rem; color:rgba(255,255,255,.45);
+      display:block; margin-top:.4rem; letter-spacing:.5px;
+    }
+    .archive-card.soon {
+      opacity:.3; pointer-events:none;
+    }
+    .btn-ghost-white {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.9rem 2.2rem; border-radius:4px;
+      border:1.5px solid rgba(255,255,255,.25);
+      color:rgba(255,255,255,.8); text-decoration:none;
+      font-size:.92rem; font-weight:500;
+      transition:all .25s;
+    }
+    .btn-ghost-white:hover {
+      border-color:var(--gold-lt); color:var(--gold-lt);
+    }
+
+    /* ── JOIN ──────────────────────────────────────── */
+    #join { background:white; text-align:center; }
+    #join .section-h2 { margin:0 auto 1rem; }
+    #join .section-lead { margin:0 auto 2.5rem; }
+    .join-actions {
+      display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+    }
+    .btn-solid {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:var(--saffron); color:white;
+      padding:.9rem 2.2rem; border-radius:4px;
+      text-decoration:none; font-size:.92rem; font-weight:600;
+      transition:all .25s;
+      box-shadow:0 6px 20px rgba(232,96,28,.3);
+    }
+    .btn-solid:hover { background:#d05218; transform:translateY(-2px); }
+    .btn-border {
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1.5px solid var(--ink); color:var(--ink);
+      padding:.9rem 2.2rem; border-radius:4px;
+      text-decoration:none; font-size:.92rem; font-weight:500;
+      transition:all .25s;
+    }
+    .btn-border:hover { background:var(--ink); color:white; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background:var(--ink);
+      color:white;
+      padding:5rem 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width:1320px; margin:0 auto;
+      display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem;
+      padding-bottom:3rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .logo { margin-bottom:1.2rem; }
+    .footer-brand p {
+      font-size:.9rem; color:rgba(255,255,255,.5);
+      line-height:1.7; max-width:320px;
+    }
+    .footer-brand a {
+      display:inline-block; margin-top:.8rem;
+      font-size:.85rem; color:var(--gold-lt); text-decoration:none;
+    }
+    .footer-brand a:hover { text-decoration:underline; }
+    .footer-col h4 {
+      font-family:'EB Garamond', serif; font-size:1.1rem;
+      color:var(--gold-lt); margin-bottom:1rem;
+    }
+    .footer-col a, .footer-col p {
+      display:block; font-size:.87rem;
+      color:rgba(255,255,255,.5);
+      text-decoration:none; line-height:1;
+      margin-bottom:.7rem; transition:color .2s;
+    }
+    .footer-col a:hover { color:var(--gold-lt); }
+    .footer-bottom {
+      max-width:1320px; margin:2rem auto 0;
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:.8rem; color:rgba(255,255,255,.3);
+      flex-wrap:wrap; gap:.5rem;
+    }
+    .footer-bottom strong { color:rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media(max-width:1024px) {
+      .hero-content { grid-template-columns:1fr; gap:3rem; padding-top:120px; min-height:auto; padding-bottom:5rem; }
+      .hero-card { display:none; }
+      .about-grid { grid-template-columns:1fr; gap:3rem; }
+      .footer-inner { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:768px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .nav-links.open {
+        display:flex; flex-direction:column;
+        position:fixed; top:68px; left:0; right:0; bottom:0;
+        background:rgba(14,26,43,.98); padding:2.5rem;
+        gap:1.8rem; overflow-y:auto;
+      }
+      .nav-links.open a { font-size:1.1rem; }
+      .pillars-grid { grid-template-columns:1fr 1fr; }
+      .activities-grid { grid-template-columns:1fr; }
+      .strip-inner { grid-template-columns:repeat(2,1fr); }
+      .team-grid { grid-template-columns:1fr; max-width:100%; }
+      .footer-inner { grid-template-columns:1fr; gap:2.5rem; }
+    }
+    @media(max-width:520px) {
+      .pillars-grid { grid-template-columns:1fr; }
+      .strip-inner { grid-template-columns:1fr 1fr; }
+      section { padding:5rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#home">
+      <img src="image/ikslogo.webp" alt="IKS Club">
+      <div class="logo-name">
+        IISER Pune IKS Club
+        <small>Indian Knowledge System</small>
+      </div>
+    </a>
+    <button class="hamburger" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#pillars">Focus Areas</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#archives">Archives</a></li>
+      <li><a href="mailto:nciks@acads.iiserpune.ac.in" class="nav-cta">Get Involved</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-wash"></div>
+  <!-- Mandala geometry -->
+  <div class="hero-geo">
+    <!-- Large mandala ring pattern right -->
+    <svg class="right" viewBox="0 0 680 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="340" cy="340" r="330" stroke="#f0c040" stroke-width="1"/>
+      <circle cx="340" cy="340" r="280" stroke="#f0c040" stroke-width=".5"/>
+      <circle cx="340" cy="340" r="220" stroke="#f0c040" stroke-width="1"/>
+      <circle cx="340" cy="340" r="160" stroke="#f0c040" stroke-width=".5"/>
+      <circle cx="340" cy="340" r="100" stroke="#f0c040" stroke-width="1"/>
+      <circle cx="340" cy="340" r="50" stroke="#f0c040" stroke-width=".5"/>
+      <!-- Spokes -->
+      <line x1="340" y1="10" x2="340" y2="670" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="10" y1="340" x2="670" y2="340" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="100" y1="100" x2="580" y2="580" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="580" y1="100" x2="100" y2="580" stroke="#f0c040" stroke-width=".4"/>
+      <!-- 8-pt star -->
+      <polygon points="340,30 365,315 650,340 365,365 340,650 315,365 30,340 315,315" stroke="#f0c040" stroke-width=".6" fill="none"/>
+      <!-- Petal ring -->
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none"/>
+      <path d="M220 340 Q200 280 220 220 Q240 280 220 340Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(45,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(90,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(135,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(180,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(225,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(270,340,340)"/>
+      <path d="M340 120 Q400 200 340 220 Q280 200 340 120Z" stroke="#f0c040" stroke-width=".5" fill="none" transform="rotate(315,340,340)"/>
+    </svg>
+    <!-- Small bottom-left -->
+    <svg class="left" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="170" cy="170" r="160" stroke="#f0c040" stroke-width=".7"/>
+      <circle cx="170" cy="170" r="120" stroke="#f0c040" stroke-width=".4"/>
+      <circle cx="170" cy="170" r="80" stroke="#f0c040" stroke-width=".7"/>
+      <line x1="170" y1="10" x2="170" y2="330" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="10" y1="170" x2="330" y2="170" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="56" y1="56" x2="284" y2="284" stroke="#f0c040" stroke-width=".4"/>
+      <line x1="284" y1="56" x2="56" y2="284" stroke="#f0c040" stroke-width=".4"/>
+    </svg>
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-rule"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <span class="hero-eyebrow">IISER Pune — Indian Knowledge System Club</span>
+      <h1 class="hero-h1">
+        Ancient Wisdom.<br>
+        <em>Modern Science.</em>
+      </h1>
+      <p class="hero-tagline">"Study the Past to Define the Future"</p>
+      <div class="hero-pills">
+        <span class="pill">📍 <strong>IISER Pune</strong>, Maharashtra</span>
+        <span class="pill">🔭 <strong>Astronomy &amp; Mathematics</strong></span>
+        <span class="pill">⚗️ <strong>Chemistry &amp; Metallurgy</strong></span>
+        <span class="pill">🌿 <strong>Āyurveda &amp; Life Sciences</strong></span>
+      </div>
+      <div class="hero-actions">
+        <a href="#about" class="btn-hero primary">Discover the Club</a>
+        <a href="archive-2026.html" class="btn-hero outline">2026 Proceedings →</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <p class="hero-card-label">At a Glance</p>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <span class="num">1</span>
+          <span class="lbl">National Conference Hosted</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">10+</span>
+          <span class="lbl">Distinguished Speakers</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">5</span>
+          <span class="lbl">IKS Disciplines</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">500+</span>
+          <span class="lbl">Participants &amp; Attendees</span>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <p class="hero-card-tagline">
+        "Bridging India's classical scientific heritage with contemporary inquiry."
+      </p>
+      <p class="hero-card-meta">In alignment with NEP 2020 · IISER Pune · Est. 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-item reveal">
+      <span class="strip-num">1</span>
+      <span class="strip-lbl">National Conference Hosted</span>
+    </div>
+    <div class="strip-item reveal reveal-d1">
+      <span class="strip-num">10+</span>
+      <span class="strip-lbl">Distinguished Speakers</span>
+    </div>
+    <div class="strip-item reveal reveal-d2">
+      <span class="strip-num">6</span>
+      <span class="strip-lbl">IKS Disciplines Covered</span>
+    </div>
+    <div class="strip-item reveal reveal-d3">
+      <span class="strip-num">500+</span>
+      <span class="strip-lbl">Participants &amp; Attendees</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <span class="section-tag reveal">Who We Are</span>
+    <h2 class="section-h2 reveal">The IISER Pune IKS Club</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="reveal">
+          The <strong>IISER Pune Indian Knowledge System (IKS) Club</strong> is a
+          scholarly community at the Indian Institute of Science Education and Research,
+          Pune, dedicated to the interdisciplinary study of India's rich scientific and
+          technological heritage.
+        </p>
+        <p class="reveal">
+          Following the success of the <strong>National Conference on IKS: Science &amp;
+          Technology (7 March 2025)</strong>, student interest grew significantly.
+          Many expressed a desire for continuous discussion on IKS themes — from
+          Astronomy and Architecture to Chemistry, Medicine, Arts, Aesthetics, and
+          Philosophy. The IKS Club formalises that momentum into a dedicated,
+          long-term platform.
+        </p>
+        <p class="reveal">
+          We bring together faculty, research scholars, and students to bridge ancient
+          wisdom with contemporary scientific inquiry, in alignment with the
+          <strong>National Education Policy 2020</strong>. The traditional, holistic
+          approach of IKS and the reductionist methods of modern science together offer
+          a powerful platform for a resilient, equitable future.
+        </p>
+        <div class="meta-tags reveal" style="margin-top:2rem;">
+          <span class="meta-tag">NEP 2020</span>
+          <span class="meta-tag">Interdisciplinary</span>
+          <span class="meta-tag">Student-Led</span>
+          <span class="meta-tag">Open to All</span>
+        </div>
+      </div>
+      <div class="about-aside">
+        <div class="vision-card reveal">
+          <h3>Our Vision</h3>
+          <p>To create a lasting institutional home for interdisciplinary scientific
+          dialogue at the intersection of ancient Indian knowledge and modern science —
+          right here at IISER Pune.</p>
+          <p>The traditional, holistic approach of IKS and the reductionist methods of
+          modern science together offer a powerful platform for building a resilient,
+          equitable future with a moral order.</p>
+        </div>
+        <div class="vision-card reveal" style="background:var(--saffron); margin-bottom:0;">
+          <h3 style="color:white;">Our Objectives</h3>
+          <p>Organise regular talks, reading groups, and events focused on Science and
+          Technology within the IKS framework; provide a structured, student-led
+          platform for interdisciplinary exploration; and foster academic curiosity and
+          cross-disciplinary dialogues across the IISER Pune community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PILLARS ── -->
+<section id="pillars">
+  <div class="section-inner">
+    <span class="section-tag reveal">Focus Areas</span>
+    <h2 class="section-h2 reveal">IKS Disciplines We Explore</h2>
+    <p class="section-lead reveal">
+      From the cosmos to the chemistry of ancient medicines — spanning the full
+      breadth of India's scientific tradition.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <div class="pillar-icon">🔭</div>
+        <h3>Astronomy &amp; Mathematics</h3>
+        <p>The Kerala School, Vedāṅga Jyotiṣa, Siddhāntic astronomy, and contributions
+        of Āryabhaṭa, Bhāskarācārya, and Mādhava — including proto-calculus and
+        quasi-heliocentric planetary models.</p>
+        <div class="pillar-accent"></div>
+      </div>
+      <div class="pillar reveal reveal-d1">
+        <div class="pillar-icon">⚗️</div>
+        <h3>Chemistry, Metallurgy &amp; Materials</h3>
+        <p>Rasaśāstra — the ancient science of chemistry and metallurgy — use of metals
+        in Bhasmā medicines, and spectroscopic validation of traditional substances
+        like Hiṅgula and Haritāla.</p>
+        <div class="pillar-accent"></div>
+      </div>
+      <div class="pillar reveal reveal-d2">
+        <div class="pillar-icon">🌿</div>
+        <h3>Āyurveda &amp; Life Sciences</h3>
+        <p>Personalized medicine from Āyurvedic traditions, Vrikshāyurveda (the science
+        of plants), herbal Kuṇapajala bio-fertilizers, and their modern scientific
+        validation.</p>
+        <div class="pillar-accent"></div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar-icon">🏛️</div>
+        <h3>Architecture &amp; Sacred Geometry</h3>
+        <p>Temple architecture as a living technology — integrating ritual, spatial
+        proportion, and energy design informed by cosmology, consciousness, and
+        metaphysical principles.</p>
+        <div class="pillar-accent"></div>
+      </div>
+      <div class="pillar reveal reveal-d1">
+        <div class="pillar-icon">📜</div>
+        <h3>Language, Grammar &amp; Epistemology</h3>
+        <p>Vyākaraṇa (scientific grammar), the Vedic Science of Śikṣā, Sanskrit as a
+        vehicle for knowledge transmission, and Indian philosophical epistemological
+        frameworks.</p>
+        <div class="pillar-accent"></div>
+      </div>
+      <div class="pillar reveal reveal-d2">
+        <div class="pillar-icon">🎓</div>
+        <h3>Arts, Aesthetics &amp; Philosophy</h3>
+        <p>Classical arts, Indian aesthetic theory, and philosophical inquiry within
+        the IKS framework — exploring connections between creativity, consciousness,
+        and scientific thought.</p>
+        <div class="pillar-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVITIES ── -->
+<section id="activities">
+  <div class="section-inner">
+    <span class="section-tag reveal">What We Do</span>
+    <h2 class="section-h2 reveal">Club Activities &amp; Programmes</h2>
+    <p class="section-lead reveal">
+      A structured calendar of academic events, open to all students, scholars, and
+      faculty at IISER Pune — no prerequisites, just curiosity.
+    </p>
+    <div class="activities-grid">
+      <div class="act-card reveal">
+        <div class="act-top ink">
+          <span class="act-top-icon">🎤</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Annual · Flagship</span>
+          <h3>National Conference (NCIKSST)</h3>
+          <p>Our flagship event brings leading scholars and students together for a full
+          day of lectures, panel discussions, and poster presentations on IKS Science
+          &amp; Technology. The 2025 edition was held on 7 March at IISER Pune.</p>
+        </div>
+      </div>
+      <div class="act-card reveal reveal-d1">
+        <div class="act-top saffron">
+          <span class="act-top-icon">📖</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Monthly · 8–10 per year</span>
+          <h3>Invited Talks</h3>
+          <p>Faculty, researchers, and practitioners deliver talks on IKS-related topics.
+          Talks are accompanied by light refreshments and open Q&amp;A, fostering broad
+          participation across departments.</p>
+        </div>
+      </div>
+      <div class="act-card reveal reveal-d2">
+        <div class="act-top gold">
+          <span class="act-top-icon">💬</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Weekly · Every Wednesday</span>
+          <h3>Wednesday Discussions</h3>
+          <p>Informal reading-group style discussions on classical IKS texts — from
+          Yuktibhāṣā and Āryabhaṭīya to Rasaratnākara. Free activity held in a
+          seminar or discussion room on campus.</p>
+        </div>
+      </div>
+      <div class="act-card reveal">
+        <div class="act-top ink" style="background:linear-gradient(135deg,#1a3a1a,#2a5a2a);">
+          <span class="act-top-icon">🏆</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Annual · Campus-Wide</span>
+          <h3>IKS Quiz</h3>
+          <p>An annual quiz event open to all IISER Pune students, with prizes for
+          winners (₹3,000 prize pool). Designed to make IKS accessible and engaging
+          for the broader campus community.</p>
+        </div>
+      </div>
+      <div class="act-card reveal reveal-d1">
+        <div class="act-top saffron" style="background:linear-gradient(135deg,#6a3a1a,#a06020);">
+          <span class="act-top-icon">🧪</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Semester-wise</span>
+          <h3>Workshops &amp; Lab Sessions</h3>
+          <p>Hands-on workshops exploring ancient Indian scientific techniques —
+          including Bhasmā preparation methods, traditional astronomical instruments,
+          and Vrikshāyurveda agrarian practices.</p>
+        </div>
+      </div>
+      <div class="act-card reveal reveal-d2">
+        <div class="act-top ink" style="background:linear-gradient(135deg,#1a2a4a,#2a4a8a);">
+          <span class="act-top-icon">📋</span>
+        </div>
+        <div class="act-body">
+          <span class="act-tag">Ongoing</span>
+          <h3>Conference Coordination</h3>
+          <p>The IKS Club supports and coordinates future IKS conferences, mobilising
+          student volunteers through established institutional networks for a
+          professionally managed, scholarly event experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section id="team">
+  <div class="section-inner">
+    <span class="section-tag reveal">People</span>
+    <h2 class="section-h2 reveal">Club Coordinators</h2>
+    <p class="section-lead reveal">
+      Led by dedicated student and faculty coordinators from within IISER Pune's
+      academic community.
+    </p>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">J</div>
+        <div class="team-info">
+          <h4>Jatin Raghuwanshi</h4>
+          <span class="team-role">Student Coordinator</span>
+          <p class="team-dept">IISER Pune</p>
+          <a href="mailto:jatin.raghuwanshi@students.iiserpune.ac.in" class="team-email">
+            jatin.raghuwanshi@students.iiserpune.ac.in
+          </a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-d1">
+        <div class="team-avatar">R</div>
+        <div class="team-info">
+          <h4>Prof. Ramakrishna G. Bhat</h4>
+          <span class="team-role">Faculty Coordinator</span>
+          <p class="team-dept">Professor, Department of Chemistry<br>IISER Pune</p>
+          <a href="mailto:rgb@iiserpune.ac.in" class="team-email">rgb@iiserpune.ac.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHIVES ── -->
+<div id="archives">
+  <div class="section-inner">
+    <span class="section-tag reveal">Academic Record</span>
+    <h2 class="section-h2 reveal" style="text-align:center;">Conference Archives</h2>
+    <p class="section-lead reveal" style="text-align:center;margin:0 auto 3rem;">
+      A permanent scholarly record of our proceedings — speaker abstracts,
+      presentation summaries, and event documentation — preserved for students
+      and researchers worldwide.
+    </p>
+    <div class="archive-row reveal">
+      <a href="archive-2026.html" class="archive-card">
+        <span class="archive-yr">2026</span>
+        <span class="archive-sub">NCIKSST · IISER Pune · 7 March</span>
+      </a>
+      <div class="archive-card soon">
+        <span class="archive-yr">2027</span>
+        <span class="archive-sub">Coming Soon</span>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;">
+      <a href="archive-2026.html" class="btn-ghost-white">Browse 2026 Proceedings →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── JOIN ── -->
+<section id="join">
+  <div class="section-inner">
+    <span class="section-tag reveal" style="justify-content:center;">Join Us</span>
+    <h2 class="section-h2 reveal" style="text-align:center;">
+      Be Part of the IKS Club
+    </h2>
+    <p class="section-lead reveal" style="text-align:center;margin:0 auto 2.5rem;">
+      Open to all faculty, PhD scholars, UG students, and independent researchers
+      with a passion for India's scientific heritage. No prerequisites — just curiosity.
+    </p>
+    <div class="join-actions reveal">
+      <a href="mailto:nciks@acads.iiserpune.ac.in?subject=IKS Club Membership Inquiry"
+         class="btn-solid">Express Interest</a>
+      <a href="archive-2026.html" class="btn-border">View 2026 Proceedings</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#home">
+        <img src="image/ikslogo.webp" alt="IKS">
+        <div class="logo-name">
+          IISER Pune IKS Club
+          <small>Indian Knowledge System</small>
+        </div>
+      </a>
+      <p>
+        A scholarly community at IISER Pune dedicated to bridging India's ancient
+        scientific heritage with contemporary research inquiry.
+      </p>
+      <a href="https://www.iiserpune.ac.in" target="_blank" rel="noopener">
+        www.iiserpune.ac.in ↗
+      </a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>IISER Pune, Dr. Homi Bhabha Road</p>
+      <p>Pune, Maharashtra 411008</p>
+      <a href="mailto:nciks@acads.iiserpune.ac.in">nciks@acads.iiserpune.ac.in</a>
+      <a href="tel:+912025908092">+91 20 2590 8092</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About the Club</a>
+      <a href="#pillars">Focus Areas</a>
+      <a href="#activities">Activities</a>
+      <a href="#team">Team</a>
+      <a href="archive-2026.html">2026 Archive</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 IISER Pune IKS Club. All rights reserved.</span>
+    <strong>iksiiserpune.in</strong>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const ham = document.getElementById('ham');
+  const nav = document.getElementById('navLinks');
+  ham.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    ham.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target) && !ham.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
