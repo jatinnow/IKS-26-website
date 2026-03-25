@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCIKSST 2026 — Conference Archive | IISER Pune IKS Club</title>
+  <meta name="description" content="Archive of the National Conference on IKS: Science and Technology, 7 March 2026, C.V. Raman Auditorium, IISER Pune.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #0e1a2b;
+      --ink-mid:    #1a2e4a;
+      --saffron:    #e8601c;
+      --saffron-lt: #f28c5e;
+      --gold:       #c9971a;
+      --gold-lt:    #f0c040;
+      --cream:      #fdf8f1;
+      --parchment:  #f5ece0;
+      --sand:       #e8d9c5;
+      --white:      #ffffff;
+      --text:       #2c2c2c;
+      --text-muted: #6b6355;
+      --border:     rgba(14,26,43,.10);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans', sans-serif; color:var(--text); background:var(--cream); overflow-x:hidden; }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:var(--parchment); }
+    ::-webkit-scrollbar-thumb { background:var(--saffron); border-radius:3px; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; width:100%; z-index:1000;
+      background:rgba(14,26,43,.97); backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(201,151,26,.2);
+    }
+    .nav-inner {
+      max-width:1320px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 2.5rem; height:68px;
+    }
+    .logo { display:flex; align-items:center; gap:.9rem; text-decoration:none; }
+    .logo img { height:40px; width:40px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(201,151,26,.4); }
+    .logo-name { font-family:'EB Garamond', serif; font-size:1.1rem; font-weight:600; color:white; line-height:1.2; }
+    .logo-name small { display:block; font-family:'DM Sans', sans-serif; font-size:.6rem; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+    .nav-right { display:flex; align-items:center; gap:1.5rem; }
+    .nav-back { color:rgba(255,255,255,.6); text-decoration:none; font-size:.85rem; font-weight:500; display:flex; align-items:center; gap:.4rem; transition:color .2s; }
+    .nav-back:hover { color:var(--gold-lt); }
+    .nav-badge {
+      background:rgba(201,151,26,.15); border:1px solid rgba(201,151,26,.35);
+      color:var(--gold-lt); font-size:.72rem; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase;
+      padding:.35rem .9rem; border-radius:3px;
+    }
+
+    /* ── PAGE HERO ── */
+    .archive-hero {
+      margin-top:68px; min-height:52vh;
+      position:relative; display:flex; align-items:flex-end;
+      overflow:hidden;
+    }
+    .ah-photo {
+      position:absolute; inset:0;
+      background:url('image/IISERPunegate.webp') center 42%/cover no-repeat;
+      filter:brightness(.38) saturate(.7);
+    }
+    .ah-wash {
+      position:absolute; inset:0;
+      background:linear-gradient(160deg,
+        rgba(14,26,43,.82) 0%,
+        rgba(30,48,96,.65) 40%,
+        rgba(180,70,20,.5) 70%,
+        rgba(14,26,43,.9) 100%);
+    }
+    /* Mandala watermark */
+    .ah-geo {
+      position:absolute; right:-80px; top:50%; transform:translateY(-50%);
+      width:480px; height:480px; opacity:.06; pointer-events:none;
+    }
+    .ah-rule {
+      position:absolute; bottom:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg, transparent 0%, var(--saffron) 25%, var(--gold) 50%, var(--saffron) 75%, transparent 100%);
+    }
+    .ah-content {
+      position:relative; z-index:10;
+      max-width:1320px; margin:0 auto; padding:0 2.5rem 4rem;
+      width:100%;
+    }
+    .ah-eyebrow {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.7rem; font-weight:700; letter-spacing:3px;
+      text-transform:uppercase; color:var(--gold-lt);
+      margin-bottom:1.2rem;
+      opacity:0; animation:fadeUp .8s ease .2s forwards;
+    }
+    .ah-eyebrow::before { content:''; width:22px; height:1px; background:var(--gold-lt); }
+    .ah-h1 {
+      font-family:'EB Garamond', serif;
+      font-size:clamp(2.4rem,5vw,4.2rem); font-weight:700;
+      color:white; line-height:1.08; margin-bottom:1.2rem;
+      opacity:0; animation:fadeUp .8s ease .35s forwards;
+    }
+    .ah-h1 em { color:var(--gold-lt); font-style:normal; }
+    .ah-meta {
+      display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem;
+      opacity:0; animation:fadeUp .8s ease .5s forwards;
+    }
+    .ah-chip {
+      display:inline-flex; align-items:center; gap:.45rem;
+      font-size:.82rem; color:rgba(255,255,255,.82);
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+      padding:.45rem 1rem; border-radius:3px; backdrop-filter:blur(4px);
+    }
+    .ah-chip strong { color:var(--gold-lt); font-weight:600; }
+    .ah-actions {
+      display:flex; gap:.8rem; flex-wrap:wrap;
+      opacity:0; animation:fadeUp .8s ease .65s forwards;
+    }
+    .btn-sm {
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.65rem 1.5rem; border-radius:3px;
+      font-size:.82rem; font-weight:600; text-decoration:none;
+      letter-spacing:.3px; transition:all .22s;
+    }
+    .btn-sm.solid { background:var(--saffron); color:white; }
+    .btn-sm.solid:hover { background:#cf5118; transform:translateY(-1px); }
+    .btn-sm.ghost { border:1.5px solid rgba(255,255,255,.3); color:rgba(255,255,255,.85); }
+    .btn-sm.ghost:hover { border-color:var(--gold-lt); color:var(--gold-lt); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── LAYOUT ── */
+    .page-body { max-width:1320px; margin:0 auto; padding:0 2.5rem; }
+
+    /* ── SECTION COMMON ── */
+    .sec { padding:5.5rem 0; border-bottom:1px solid var(--border); }
+    .sec:last-child { border-bottom:none; }
+    .sec-tag {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.68rem; font-weight:700; letter-spacing:3px;
+      text-transform:uppercase; color:var(--saffron); margin-bottom:.7rem;
+    }
+    .sec-tag::before { content:''; width:18px; height:1.5px; background:var(--saffron); }
+    .sec-h2 {
+      font-family:'EB Garamond', serif;
+      font-size:clamp(1.8rem,3vw,2.6rem); font-weight:700;
+      color:var(--ink); line-height:1.15; margin-bottom:.8rem;
+    }
+    .sec-lead { font-size:.98rem; color:var(--text-muted); max-width:560px; line-height:1.8; margin-bottom:3rem; }
+
+    /* REVEAL */
+    .r { opacity:0; transform:translateY(20px); transition:opacity .65s ease, transform .65s ease; }
+    .r.in { opacity:1; transform:none; }
+    .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      background:var(--ink); border-radius:8px; overflow:hidden;
+      margin-bottom:0;
+    }
+    .stat-box {
+      padding:2.5rem 1.5rem; text-align:center;
+      border-right:1px solid rgba(255,255,255,.06);
+      position:relative;
+    }
+    .stat-box:last-child { border-right:none; }
+    .stat-box::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--saffron),var(--gold));
+      transform:scaleX(0); transform-origin:left; transition:transform .4s;
+    }
+    .stat-box:hover::before { transform:scaleX(1); }
+    .stat-num { font-family:'EB Garamond', serif; font-size:2.8rem; font-weight:700; color:var(--gold-lt); display:block; line-height:1; }
+    .stat-lbl { font-size:.72rem; color:rgba(255,255,255,.45); margin-top:.4rem; display:block; letter-spacing:.5px; }
+
+    /* ── THEMES GRID ── */
+    .themes-grid {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:1.5px;
+      background:var(--border); border:1.5px solid var(--border);
+      border-radius:8px; overflow:hidden;
+    }
+    .theme-tile {
+      background:white; padding:2rem 1.6rem;
+      transition:background .25s; position:relative;
+    }
+    .theme-tile:hover { background:var(--ink); }
+    .theme-tile:hover .t-icon { color:var(--gold-lt); }
+    .theme-tile:hover h4 { color:white; }
+    .theme-tile:hover p { color:rgba(255,255,255,.58); }
+    .t-icon { font-size:1.6rem; margin-bottom:.8rem; color:var(--saffron); transition:color .25s; display:block; }
+    .theme-tile h4 { font-family:'EB Garamond', serif; font-size:1.05rem; color:var(--ink); margin-bottom:.5rem; transition:color .25s; line-height:1.3; }
+    .theme-tile p { font-size:.8rem; line-height:1.6; color:var(--text-muted); transition:color .25s; }
+    .theme-accent {
+      position:absolute; bottom:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,var(--saffron),var(--gold));
+      transform:scaleX(0); transform-origin:left; transition:transform .3s;
+    }
+    .theme-tile:hover .theme-accent { transform:scaleX(1); }
+
+    /* ── SCHEDULE ── */
+    .schedule-wrap { display:flex; flex-direction:column; gap:0; }
+    .sched-session {
+      border:1.5px solid var(--border); border-radius:7px;
+      overflow:hidden; margin-bottom:1rem;
+    }
+    .sched-header {
+      display:grid; grid-template-columns:120px 1fr auto;
+      align-items:center; gap:1.5rem;
+      padding:1.2rem 1.8rem;
+      background:var(--parchment);
+      cursor:pointer;
+      transition:background .2s;
+    }
+    .sched-header:hover { background:var(--sand); }
+    .sched-time {
+      font-family:'EB Garamond', serif; font-size:1.05rem;
+      font-weight:700; color:var(--saffron);
+      white-space:nowrap;
+    }
+    .sched-name {
+      font-family:'EB Garamond', serif; font-size:1.1rem;
+      color:var(--ink); font-weight:600;
+    }
+    .sched-toggle {
+      font-size:.8rem; color:var(--text-muted);
+      background:none; border:none; cursor:pointer;
+      font-family:'DM Sans', sans-serif; transition:color .2s;
+      padding:0; white-space:nowrap;
+    }
+    .sched-toggle:hover { color:var(--saffron); }
+    .sched-body {
+      padding:0 1.8rem; max-height:0; overflow:hidden;
+      transition:max-height .4s ease, padding .3s;
+    }
+    .sched-body.open { max-height:600px; padding:1.2rem 1.8rem 1.8rem; }
+    .sched-row {
+      display:grid; grid-template-columns:100px 1fr;
+      gap:1rem; padding:.9rem 0;
+      border-bottom:1px solid var(--border);
+      align-items:start;
+    }
+    .sched-row:last-child { border-bottom:none; }
+    .sched-slot { font-size:.78rem; font-weight:700; color:var(--gold); white-space:nowrap; padding-top:.15rem; }
+    .sched-detail h5 { font-size:.92rem; font-weight:600; color:var(--ink); margin-bottom:.2rem; }
+    .sched-detail p { font-size:.84rem; color:var(--text-muted); line-height:1.55; font-style:italic; }
+    .sched-chair {
+      font-size:.75rem; color:var(--saffron); font-weight:600;
+      letter-spacing:.3px; margin-top:.3rem; display:block;
+    }
+    .sched-break {
+      border:1.5px dashed var(--border); border-radius:7px;
+      padding:1rem 1.8rem; margin-bottom:1rem;
+      display:flex; align-items:center; gap:1rem;
+    }
+    .sched-break-time { font-family:'EB Garamond', serif; font-size:1rem; color:var(--gold); font-weight:700; white-space:nowrap; }
+    .sched-break-lbl { font-size:.88rem; color:var(--text-muted); }
+
+    /* ── LEADERSHIP ── */
+    .patron-row { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-bottom:3rem; }
+    .patron-card {
+      background:white; border-radius:7px; overflow:hidden;
+      border:1.5px solid var(--border); transition:border-color .25s, transform .25s;
+    }
+    .patron-card:hover { border-color:var(--saffron); transform:translateY(-4px); }
+    .patron-img-wrap {
+      width:100%; height:220px; overflow:hidden; background:var(--parchment);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .patron-img-wrap a { display:block; width:100%; height:100%; }
+    .patron-img-wrap img {
+      width:100%; height:100%; object-fit:cover; object-position:top center;
+      transition:transform .35s;
+    }
+    .patron-card:hover .patron-img-wrap img { transform:scale(1.04); }
+    .patron-body { padding:1.5rem; }
+    .patron-role { font-size:.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--saffron); display:block; margin-bottom:.4rem; }
+    .patron-name { font-family:'EB Garamond', serif; font-size:1.2rem; color:var(--ink); margin-bottom:.3rem; }
+    .patron-name a { color:inherit; text-decoration:none; }
+    .patron-name a:hover { color:var(--saffron); }
+    .patron-title { font-size:.82rem; color:var(--text-muted); line-height:1.5; }
+
+    /* ── COMMITTEE ── */
+    .committee-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+    .committee-box {
+      background:white; border-radius:7px; padding:2rem;
+      border:1.5px solid var(--border);
+    }
+    .committee-box h3 { font-family:'EB Garamond', serif; font-size:1.4rem; color:var(--ink); margin-bottom:1.2rem; }
+    .committee-sub { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--saffron); margin-bottom:.6rem; display:block; margin-top:1rem; }
+    .committee-sub:first-of-type { margin-top:0; }
+    .committee-box ul { list-style:none; padding:0; }
+    .committee-box li {
+      font-size:.88rem; color:var(--text-muted); line-height:1;
+      padding:.6rem 0 .6rem 1.2rem; position:relative;
+      border-bottom:1px solid var(--border);
+    }
+    .committee-box li:last-child { border-bottom:none; }
+    .committee-box li::before { content:'—'; position:absolute; left:0; color:var(--saffron); font-size:.8rem; }
+
+    /* ── SPEAKERS ── */
+    .speakers-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+    .speaker-card {
+      background:white; border-radius:7px; overflow:hidden;
+      border:1.5px solid var(--border); transition:all .3s;
+    }
+    .speaker-card:hover { border-color:var(--saffron); transform:translateY(-5px); box-shadow:0 16px 36px rgba(14,26,43,.08); }
+    .sp-photo {
+      width:100%; height:200px; overflow:hidden;
+      background:var(--parchment); display:block;
+    }
+    .sp-photo img {
+      width:100%; height:100%; object-fit:cover; object-position:top center;
+      transition:transform .35s; display:block;
+    }
+    .speaker-card:hover .sp-photo img { transform:scale(1.05); }
+    .sp-body { padding:1.3rem; }
+    .sp-talk {
+      font-size:.68rem; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; color:var(--saffron);
+      display:block; margin-bottom:.5rem;
+    }
+    .sp-name { font-family:'EB Garamond', serif; font-size:1.15rem; color:var(--ink); margin-bottom:.25rem; }
+    .sp-name a { color:inherit; text-decoration:none; }
+    .sp-name a:hover { color:var(--saffron); }
+    .sp-affil { font-size:.78rem; color:var(--text-muted); line-height:1.4; margin-bottom:.6rem; }
+    .sp-lecture {
+      font-size:.8rem; color:var(--ink); font-style:italic;
+      line-height:1.5; border-left:2px solid var(--sand);
+      padding-left:.7rem; margin-top:.6rem;
+    }
+
+    /* Session chairs grid — same cards but slightly different accent */
+    .chairs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-bottom:3rem; }
+    .chair-card {
+      background:white; border-radius:7px; overflow:hidden;
+      border:1.5px solid var(--border); transition:all .3s;
+    }
+    .chair-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 14px 30px rgba(14,26,43,.07); }
+    .ch-photo {
+      width:100%; height:180px; overflow:hidden;
+      background:var(--parchment); display:block;
+    }
+    .ch-photo img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .35s; display:block; }
+    .chair-card:hover .ch-photo img { transform:scale(1.04); }
+    .ch-body { padding:1.2rem; }
+    .ch-role { font-size:.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:.4rem; }
+    .ch-name { font-family:'EB Garamond', serif; font-size:1.1rem; color:var(--ink); margin-bottom:.2rem; }
+    .ch-name a { color:inherit; text-decoration:none; }
+    .ch-name a:hover { color:var(--gold); }
+    .ch-affil { font-size:.78rem; color:var(--text-muted); line-height:1.4; }
+
+    /* ── SPONSOR ── */
+    .sponsor-wrap {
+      display:flex; align-items:center; gap:3rem;
+      background:white; border-radius:8px; padding:2.5rem 3rem;
+      border:1.5px solid var(--border);
+    }
+    .sponsor-logo-box { flex-shrink:0; }
+    .sponsor-logo-box a { display:block; }
+    .sponsor-logo-box img { max-width:200px; max-height:80px; object-fit:contain; }
+    .sponsor-info h4 { font-family:'EB Garamond', serif; font-size:1.3rem; color:var(--ink); margin-bottom:.3rem; }
+    .sponsor-info p { font-size:.9rem; color:var(--text-muted); line-height:1.6; }
+
+    /* ── DOWNLOAD BANNER ── */
+    .dl-banner {
+      background:var(--ink); border-radius:8px;
+      padding:2rem 2.5rem;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:1.5rem;
+    }
+    .dl-banner p { color:rgba(255,255,255,.75); font-size:.95rem; }
+    .dl-banner strong { color:white; display:block; font-family:'EB Garamond', serif; font-size:1.2rem; margin-bottom:.2rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--ink); color:white;
+      padding:4rem 2.5rem 2rem; margin-top:0;
+    }
+    .footer-inner {
+      max-width:1320px; margin:0 auto;
+      display:grid; grid-template-columns:2fr 1fr 1fr; gap:3.5rem;
+      padding-bottom:2.5rem; border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .f-brand .logo { margin-bottom:1rem; }
+    .f-brand p { font-size:.88rem; color:rgba(255,255,255,.45); line-height:1.7; max-width:300px; }
+    .f-brand a { color:var(--gold-lt); font-size:.85rem; text-decoration:none; display:inline-block; margin-top:.6rem; }
+    .f-col h4 { font-family:'EB Garamond', serif; font-size:1.05rem; color:var(--gold-lt); margin-bottom:.9rem; }
+    .f-col a, .f-col p { display:block; font-size:.84rem; color:rgba(255,255,255,.45); text-decoration:none; margin-bottom:.55rem; line-height:1; transition:color .2s; }
+    .f-col a:hover { color:var(--gold-lt); }
+    .footer-bottom { max-width:1320px; margin:1.8rem auto 0; display:flex; justify-content:space-between; align-items:center; font-size:.78rem; color:rgba(255,255,255,.25); flex-wrap:wrap; gap:.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px) {
+      .speakers-grid { grid-template-columns:repeat(3,1fr); }
+      .chairs-grid   { grid-template-columns:repeat(2,1fr); }
+      .themes-grid   { grid-template-columns:repeat(3,1fr); }
+    }
+    @media(max-width:900px) {
+      .stats-row      { grid-template-columns:repeat(2,1fr); }
+      .patron-row     { grid-template-columns:repeat(2,1fr); }
+      .committee-grid { grid-template-columns:1fr; }
+      .speakers-grid  { grid-template-columns:repeat(2,1fr); }
+      .footer-inner   { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:640px) {
+      .page-body { padding:0 1.2rem; }
+      .themes-grid { grid-template-columns:repeat(2,1fr); }
+      .patron-row  { grid-template-columns:1fr; }
+      .chairs-grid { grid-template-columns:1fr; }
+      .speakers-grid { grid-template-columns:1fr; }
+      .sched-header { grid-template-columns:90px 1fr; }
+      .sched-toggle { display:none; }
+      .ah-content { padding:0 1.2rem 3rem; }
+      .sponsor-wrap { flex-direction:column; padding:2rem; }
+      .stats-row { grid-template-columns:1fr 1fr; }
+      footer { padding:3rem 1.2rem 1.5rem; }
+      .footer-inner { grid-template-columns:1fr; gap:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">
+      <img src="image/ikslogo.webp" alt="IKS Club">
+      <div class="logo-name">IISER Pune IKS Club <small>Indian Knowledge System</small></div>
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back">← Back to Club</a>
+      <span class="nav-badge">Archive · 2026</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="archive-hero">
+  <div class="ah-photo"></div>
+  <div class="ah-wash"></div>
+  <!-- Mandala SVG watermark -->
+  <svg class="ah-geo" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="240" cy="240" r="230" stroke="#f0c040" stroke-width=".8"/>
+    <circle cx="240" cy="240" r="190" stroke="#f0c040" stroke-width=".4"/>
+    <circle cx="240" cy="240" r="150" stroke="#f0c040" stroke-width=".8"/>
+    <circle cx="240" cy="240" r="110" stroke="#f0c040" stroke-width=".4"/>
+    <circle cx="240" cy="240" r="70"  stroke="#f0c040" stroke-width=".8"/>
+    <circle cx="240" cy="240" r="35"  stroke="#f0c040" stroke-width=".4"/>
+    <line x1="240" y1="10"  x2="240" y2="470" stroke="#f0c040" stroke-width=".35"/>
+    <line x1="10"  y1="240" x2="470" y2="240" stroke="#f0c040" stroke-width=".35"/>
+    <line x1="77"  y1="77"  x2="403" y2="403" stroke="#f0c040" stroke-width=".35"/>
+    <line x1="403" y1="77"  x2="77"  y2="403" stroke="#f0c040" stroke-width=".35"/>
+    <polygon points="240,30 258,222 450,240 258,258 240,450 222,258 30,240 222,222" stroke="#f0c040" stroke-width=".5" fill="none"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(45,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(90,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(135,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(180,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(225,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(270,240,240)"/>
+    <path d="M240 100 Q280 170 240 185 Q200 170 240 100Z" stroke="#f0c040" stroke-width=".4" fill="none" transform="rotate(315,240,240)"/>
+  </svg>
+  <div class="ah-rule"></div>
+  <div class="ah-content">
+    <span class="ah-eyebrow">Conference Archive</span>
+    <h1 class="ah-h1">National Conference on IKS:<br><em>Science &amp; Technology</em></h1>
+    <div class="ah-meta">
+      <span class="ah-chip">📅 <strong>7 March 2026</strong></span>
+      <span class="ah-chip">📍 <strong>C.V. Raman Auditorium, IISER Pune</strong></span>
+      <span class="ah-chip">🎓 <strong>NCIKSST 2026</strong></span>
+    </div>
+    <div class="ah-actions">
+      <a href="Updated_Schedule.pdf" download class="btn-sm solid">↓ Download Schedule PDF</a>
+      <a href="#speakers" class="btn-sm ghost">View Speakers</a>
+      <a href="#schedule" class="btn-sm ghost">Full Schedule</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- STATS -->
+  <div class="sec" style="padding-top:3.5rem; padding-bottom:3.5rem;">
+    <div class="stats-row r">
+      <div class="stat-box"><span class="stat-num">10</span><span class="stat-lbl">Lecture Sessions</span></div>
+      <div class="stat-box"><span class="stat-num">4</span><span class="stat-lbl">Session Chairs</span></div>
+      <div class="stat-box"><span class="stat-num">500+</span><span class="stat-lbl">Participants</span></div>
+      <div class="stat-box"><span class="stat-num">6</span><span class="stat-lbl">Panel Discussants</span></div>
+    </div>
+  </div>
+
+  <!-- THEMES -->
+  <div class="sec">
+    <span class="sec-tag r">Conference Themes</span>
+    <h2 class="sec-h2 r">Domains of Inquiry</h2>
+    <p class="sec-lead r">Five interconnected streams spanning India's classical scientific tradition.</p>
+    <div class="themes-grid r">
+      <div class="theme-tile">
+        <span class="t-icon">🔭</span>
+        <h4>Astronomy &amp; Mathematics</h4>
+        <p>Kerala School, Vedāṅga Jyotiṣa, Siddhāntic astronomy, and proto-calculus.</p>
+        <div class="theme-accent"></div>
+      </div>
+      <div class="theme-tile">
+        <span class="t-icon">⚗️</span>
+        <h4>Chemistry, Metallurgy &amp; Materials</h4>
+        <p>Rasaśāstra, Bhasmā medicines, spectroscopic validation of Hiṅgula &amp; Haritāla.</p>
+        <div class="theme-accent"></div>
+      </div>
+      <div class="theme-tile">
+        <span class="t-icon">🌿</span>
+        <h4>Āyurveda &amp; Life Sciences</h4>
+        <p>Personalised medicine, Vrikshāyurveda, Herbal Kuṇapajala bio-fertilizers.</p>
+        <div class="theme-accent"></div>
+      </div>
+      <div class="theme-tile">
+        <span class="t-icon">🏛️</span>
+        <h4>Architecture &amp; Sacred Geometry</h4>
+        <p>Temple building technology, spatial proportion, ritual design and cosmology.</p>
+        <div class="theme-accent"></div>
+      </div>
+      <div class="theme-tile">
+        <span class="t-icon">📜</span>
+        <h4>Scientific Language &amp; Grammar</h4>
+        <p>Vyākaraṇa, Vedic Śikṣā, Sanskrit as a vehicle for knowledge transmission.</p>
+        <div class="theme-accent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFERENCE LEADERSHIP -->
+  <div class="sec" id="leadership">
+    <span class="sec-tag r">Leadership</span>
+    <h2 class="sec-h2 r">Patrons &amp; Convenor</h2>
+    <div class="patron-row">
+
+      <div class="patron-card r">
+        <div class="patron-img-wrap">
+          <a href="https://www.iiserpune.ac.in/institute/about/leadership/bog-chairperson" target="_blank" rel="noopener">
+            <img src="image/madan_gopal.jpg" alt="Shri Madabhushi Madan Gopal">
+          </a>
+        </div>
+        <div class="patron-body">
+          <span class="patron-role">Chief Patron</span>
+          <p class="patron-name"><a href="https://www.iiserpune.ac.in/institute/about/leadership/bog-chairperson" target="_blank" rel="noopener">Shri Madabhushi Madan Gopal</a></p>
+          <p class="patron-title">IAS · Chairperson, Board of Governors, IISER Pune</p>
+        </div>
+      </div>
+
+      <div class="patron-card r d1">
+        <div class="patron-img-wrap">
+          <a href="https://www.iiserpune.ac.in/institute/about/leadership/director" target="_blank" rel="noopener">
+            <img src="image/sunil_bhagwat.webp" alt="Prof. Sunil S. Bhagwat">
+          </a>
+        </div>
+        <div class="patron-body">
+          <span class="patron-role">Patron</span>
+          <p class="patron-name"><a href="https://www.iiserpune.ac.in/institute/about/leadership/director" target="_blank" rel="noopener">Prof. Sunil S. Bhagwat</a></p>
+          <p class="patron-title">Professor &amp; Director, IISER Pune</p>
+        </div>
+      </div>
+
+      <div class="patron-card r d2">
+        <div class="patron-img-wrap">
+          <a href="https://ragobh.wixsite.com/rgb-group/about" target="_blank" rel="noopener">
+            <img src="image/headshot.jpeg" alt="Prof. Ramakrishna G. Bhat">
+          </a>
+        </div>
+        <div class="patron-body">
+          <span class="patron-role">Convenor</span>
+          <p class="patron-name"><a href="https://ragobh.wixsite.com/rgb-group/about" target="_blank" rel="noopener">Prof. Ramakrishna G. Bhat</a></p>
+          <p class="patron-title">Professor, Dept. of Chemistry, IISER Pune</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Organizing + Advisory -->
+    <div class="committee-grid r">
+      <div class="committee-box">
+        <h3>Organizing Committee</h3>
+        <span class="committee-sub">Faculty</span>
+        <ul>
+          <li>Prof. Ramakrishna G. Bhat — Chemistry, IISER Pune</li>
+          <li>Dr. Rahul Dahiya — Earth &amp; Climate Science, IISER Pune</li>
+          <li>Dr. Chandrasheel Bhagwat — Mathematics, IISER Pune</li>
+        </ul>
+        <span class="committee-sub">Students</span>
+        <ul>
+          <li>Jatin Raghuwanshi — Physics</li>
+          <li>Ganesh Kondhare — Chemistry</li>
+          <li>Rana Aaditya Kumar Singh — Physics</li>
+          <li>Aditya Dahiya — Biology</li>
+        </ul>
+      </div>
+      <div class="committee-box">
+        <h3>Advisory Committee</h3>
+        <ul>
+          <li>Shri Madabhushi Madan Gopal — IAS, BOG Chairperson, IISER Pune</li>
+          <li>Prof. Sunil S. Bhagwat — Director, IISER Pune</li>
+          <li>Prof. Ujwala Chakradeo — Vice Chancellor, SNDT Women's University</li>
+          <li>Prof. M. D. Srinivas — Centre for Policy Studies</li>
+          <li>Prof. Amartya Kumar Dutta — ISI Kolkata</li>
+          <li>Prof. Anil Kumar Gourishetty — IIT Roorkee</li>
+          <li>Prof. V. Ramanathan — IIT BHU</li>
+          <li>Prof. T. V. Bharat — IIT Guwahati</li>
+          <li>Prof. Yogesh Deshpande — VNIT Nagpur</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="sec" id="schedule">
+    <span class="sec-tag r">7 March 2026</span>
+    <h2 class="sec-h2 r">Programme Schedule</h2>
+    <p class="sec-lead r">C.V. Raman Auditorium · Full-day programme with lectures, panel discussion, and poster presentations.</p>
+
+    <div class="dl-banner r" style="margin-bottom:2.5rem;">
+      <div>
+        <strong>Full Schedule PDF</strong>
+        <p>Download the complete programme with speaker bios and poster listings.</p>
+      </div>
+      <a href="Updated_Schedule.pdf" download class="btn-sm solid">↓ Download PDF</a>
+    </div>
+
+    <div class="schedule-wrap">
+
+      <!-- Registration -->
+      <div class="sched-break r">
+        <span class="sched-break-time">8:30 AM</span>
+        <span class="sched-break-lbl">Registration &amp; Welcome</span>
+      </div>
+
+      <!-- Inauguration -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">9:00 AM</span>
+          <span class="sched-name">Inauguration &amp; Keynote</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <div class="sched-row">
+            <span class="sched-slot">9:00–9:03</span>
+            <div class="sched-detail"><h5>Welcome &amp; Introduction</h5><p>Prof. Ramakrishna G. Bhat — Conference Theme Overview</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">9:03–9:10</span>
+            <div class="sched-detail"><h5>Inaugural Address</h5><p>Prof. Sunil S. Bhagwat — Hon'ble Director, IISER Pune</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">9:10–9:17</span>
+            <div class="sched-detail"><h5>Address</h5><p>Shri Madabhushi Madan Gopal — Hon'ble Chairperson BOG, IISER Pune</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">9:17–9:27</span>
+            <div class="sched-detail"><h5>Keynote Address</h5><p>Prof. M. D. Srinivas (Padma Shri Awardee)</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">9:27–9:30</span>
+            <div class="sched-detail"><h5>Vote of Thanks</h5></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session 1 -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">9:30 AM</span>
+          <span class="sched-name">Session 1 — Ancient Indian Mathematics</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <span class="sched-chair">Chairperson: Dr. Shashikala Gurpur, Symbiosis Law School</span>
+          <div class="sched-row">
+            <span class="sched-slot">9:30–10:00</span>
+            <div class="sched-detail"><h5>Prof. M. D. Srinivas</h5><p>Seminal Contributions of the Kerala School of Mathematics and Astronomy</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">10:00–10:30</span>
+            <div class="sched-detail"><h5>Prof. Amartya Kumar Dutta</h5><p>Mathematics in Ancient India: Glimpses</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">10:30–11:00</span>
+            <div class="sched-detail"><h5>Prof. Anil Gourishetty</h5><p>Promoting Sanskrit and IKS</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tea Break -->
+      <div class="sched-break r">
+        <span class="sched-break-time">11:00 AM</span>
+        <span class="sched-break-lbl">Tea Break &amp; Photography Session</span>
+      </div>
+
+      <!-- Session 2 -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">11:30 AM</span>
+          <span class="sched-name">Session 2 — STEM–IKS Integration</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <span class="sched-chair">Chairperson: Dr. Prasad Joshi, Vice-Chancellor, Deccan College</span>
+          <div class="sched-row">
+            <span class="sched-slot">11:30–12:00</span>
+            <div class="sched-detail"><h5>Prof. M. S. Sriram</h5><p>Notable Features of Siddhāntic Astronomy</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">12:00–12:30</span>
+            <div class="sched-detail"><h5>Prof. V. Ramanathan</h5><p>Insights from Spectroscopic Characterization of Hiṅgula &amp; Haritāla</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">12:30–1:00</span>
+            <div class="sched-detail"><h5>Dr. Ketu Ramachandrasekhar</h5><p>Temple Architecture: Sacred Geometry, Consciousness, and Technology</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lunch -->
+      <div class="sched-break r">
+        <span class="sched-break-time">1:00 PM</span>
+        <span class="sched-break-lbl">Lunch &amp; Networking</span>
+      </div>
+
+      <!-- Session 3 -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">2:00 PM</span>
+          <span class="sched-name">Session 3 — Ancient Sciences &amp; Applications</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <span class="sched-chair">Chairperson: Dr. Naveen Kumar, Director, ICMR-NIV Pune</span>
+          <div class="sched-row">
+            <span class="sched-slot">2:00–2:30</span>
+            <div class="sched-detail"><h5>Prof. Sunita T. Pandey</h5><p>Vrikshayurveda: A Glorious Agricultural Heritage of Bharat and Its Scientific Validation — Herbal Kuṇap Jal in particular</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">2:30–3:00</span>
+            <div class="sched-detail"><h5>Shri Raghava Krishna</h5><p>Cultural Strategies for Institutionalizing IKS Sciences</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">3:00–3:30</span>
+            <div class="sched-detail"><h5>Prof. Ramakrishna G. Bhat</h5><p>Metals and Medicines in Ancient Indian Chemistry: Teaching at its Best</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">3:30–4:00</span>
+            <div class="sched-detail"><h5>Prof. Alex Hankey</h5><p>The Four Levels of Speech in Śikṣā, the Vedic Science of Education</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tea + Poster -->
+      <div class="sched-break r">
+        <span class="sched-break-time">4:00–4:30</span>
+        <span class="sched-break-lbl">Tea Break &amp; Poster Viewing</span>
+      </div>
+
+      <!-- Session 4 -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">4:30 PM</span>
+          <span class="sched-name">Session 4 — Poster Presentations</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <span class="sched-chair">Chairperson: Prof. Bhav Sharma, Central Sanskrit University / Deccan College</span>
+          <div class="sched-row">
+            <span class="sched-slot">4:30–4:37</span>
+            <div class="sched-detail"><h5>Dr. Vasudev Aital</h5><p>DES Pune University, Pune</p></div>
+          </div>
+          <div class="sched-row">
+            <span class="sched-slot">4:37–4:54</span>
+            <div class="sched-detail"><h5>Prof. Hari Krishna</h5><p>NIT Warangal</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session 5 -->
+      <div class="sched-session r">
+        <div class="sched-header" onclick="toggleSession(this)">
+          <span class="sched-time">5:00 PM</span>
+          <span class="sched-name">Session 5 — Panel Discussion</span>
+          <button class="sched-toggle">Expand ↓</button>
+        </div>
+        <div class="sched-body">
+          <span class="sched-chair">Moderator: Prof. Anil Kumar Gourishetty, IIT Roorkee</span>
+          <div class="sched-row">
+            <span class="sched-slot">Panelists</span>
+            <div class="sched-detail">
+              <p>Shri Madabhushi Madan Gopal (IAS) · Prof. Sunil S. Bhagwat · Prof. M. D. Srinivas · Prof. M. S. Sriram · Shri Raghava Krishna · Prof. Amartya Kumar Dutta</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing -->
+      <div class="sched-break r">
+        <span class="sched-break-time">6:00–6:20</span>
+        <span class="sched-break-lbl">Closing Remarks &amp; Vote of Thanks</span>
+      </div>
+
+    </div><!-- /schedule-wrap -->
+  </div>
+
+  <!-- SESSION CHAIRS -->
+  <div class="sec" id="chairs">
+    <span class="sec-tag r">Academic Leadership</span>
+    <h2 class="sec-h2 r">Session Chairs</h2>
+    <div class="chairs-grid">
+
+      <div class="chair-card r">
+        <a class="ch-photo" href="#" title="Dr. Shashikala Gurpur">
+          <img src="image/Dr-Shashikala-Gurpur.jpg" alt="Dr. Shashikala Gurpur">
+        </a>
+        <div class="ch-body">
+          <span class="ch-role">Session 1 Chair</span>
+          <p class="ch-name">Dr. Shashikala Gurpur</p>
+          <p class="ch-affil">Director, Symbiosis Law School, Pune · Jean Monnet Chair Professor · Fulbright Scholar</p>
+        </div>
+      </div>
+
+      <div class="chair-card r d1">
+        <a class="ch-photo" href="#" title="Dr. Prasad Joshi">
+          <img src="image/Prasad_Joshi.jpeg" alt="Dr. Prasad Joshi">
+        </a>
+        <div class="ch-body">
+          <span class="ch-role">Session 2 Chair</span>
+          <p class="ch-name">Dr. Prasad Joshi</p>
+          <p class="ch-affil">Vice-Chancellor, Deccan College Post-Graduate &amp; Research Institute, Pune</p>
+        </div>
+      </div>
+
+      <div class="chair-card r d2">
+        <a class="ch-photo" href="#" title="Dr. Naveen Kumar">
+          <img src="image/Naveen_Kumar.jpg" alt="Dr. Naveen Kumar">
+        </a>
+        <div class="ch-body">
+          <span class="ch-role">Session 3 Chair</span>
+          <p class="ch-name">Dr. Naveen Kumar</p>
+          <p class="ch-affil">Director, ICMR-National Institute of Virology, Pune · WHO Technical Advisor</p>
+        </div>
+      </div>
+
+      <div class="chair-card r d3">
+        <a class="ch-photo" href="#" title="Prof. Bhav Sharma">
+          <img src="image/Bhav_Sharma.jpg" alt="Prof. Bhav Sharma">
+        </a>
+        <div class="ch-body">
+          <span class="ch-role">Session 4 Chair</span>
+          <p class="ch-name">Prof. Bhav Sharma</p>
+          <p class="ch-affil">Assoc. Professor, Centre of IKS-EDS, Central Sanskrit University / Deccan College</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SPEAKERS -->
+  <div class="sec" id="speakers">
+    <span class="sec-tag r">Distinguished Speakers</span>
+    <h2 class="sec-h2 r">Conference Lectures</h2>
+    <p class="sec-lead r">Ten lectures across three technical sessions, delivered by leading scholars from across India.</p>
+
+    <div class="speakers-grid">
+
+      <div class="speaker-card r">
+        <a class="sp-photo" href="#schedule" title="View lecture in schedule">
+          <img src="image/M. D. Srinivas.webp" alt="Prof. M. D. Srinivas">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Keynote + Session 1</span>
+          <p class="sp-name">Prof. M. D. Srinivas</p>
+          <p class="sp-affil">Physicist &amp; Historian, Centre for Policy Studies · Padma Shri Awardee</p>
+          <p class="sp-lecture">Seminal Contributions of the Kerala School of Mathematics and Astronomy</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d1">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/Prof. Amartya Dutta.jpg" alt="Prof. Amartya Kumar Dutta">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 1</span>
+          <p class="sp-name">Prof. Amartya Kumar Dutta</p>
+          <p class="sp-affil">Mathematician, ISI Kolkata · INSA Teachers Award</p>
+          <p class="sp-lecture">Mathematics in Ancient India: Glimpses</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d2">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/Anil Gourishetty.webp" alt="Prof. Anil Kumar Gourishetty">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 1 + Panel Moderator</span>
+          <p class="sp-name"><a href="https://www.iitr.ac.in/" target="_blank" rel="noopener">Prof. Anil Kumar Gourishetty</a></p>
+          <p class="sp-affil">Professor of Physics &amp; Head, Centre for IKS, IIT Roorkee</p>
+          <p class="sp-lecture">Promoting Sanskrit and IKS</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d3">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/MS_Sriram.jpg" alt="Prof. M. S. Sriram">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 2</span>
+          <p class="sp-name">Prof. M. S. Sriram</p>
+          <p class="sp-affil">Physicist &amp; Historian, Prof. K. V. Sarma Research Foundation, Chennai · INSA Fellow</p>
+          <p class="sp-lecture">Notable Features of Siddhāntic Astronomy</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/V Ramanathan.webp" alt="Prof. V. Ramanathan">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 2</span>
+          <p class="sp-name"><a href="#" title="IIT BHU Varanasi">Prof. V. Ramanathan</a></p>
+          <p class="sp-affil">Chemist &amp; Spectroscopist, IIT (BHU) Varanasi</p>
+          <p class="sp-lecture">Insights from Spectroscopic Characterization of Hiṅgula &amp; Haritāla</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d1">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/ketu_ramchand.png" alt="Dr. Ketu Ramachandrasekhar">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 2</span>
+          <p class="sp-name">Dr. Ketu Ramachandrasekhar</p>
+          <p class="sp-affil">Ministry of Culture Fellow · Siddhanta Knowledge Foundation (SKF)</p>
+          <p class="sp-lecture">Temple Architecture: Sacred Geometry, Consciousness, and Technology</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d2">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/new_Sunita_Pandey.jpg" alt="Prof. Sunita T. Pandey">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 3</span>
+          <p class="sp-name">Prof. Sunita T. Pandey</p>
+          <p class="sp-affil">Professor of Agronomy, G.B. Pant University · Rishi Parashar Award 2024</p>
+          <p class="sp-lecture">Vrikshayurveda: Bharat's Agricultural Heritage &amp; Herbal Kuṇap Jal</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d3">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/raghav_krishna.jpg" alt="Shri Raghava Krishna">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 3</span>
+          <p class="sp-name"><a href="https://brhat.in" target="_blank" rel="noopener">Shri Raghava Krishna</a></p>
+          <p class="sp-affil">Founder &amp; CEO, Brhat Culture Creatives</p>
+          <p class="sp-lecture">Cultural Strategies for Institutionalizing IKS Sciences</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/headshot.jpeg" alt="Prof. Ramakrishna G. Bhat">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 3 + Convenor</span>
+          <p class="sp-name"><a href="https://ragobh.wixsite.com/rgb-group/about" target="_blank" rel="noopener">Prof. Ramakrishna G. Bhat</a></p>
+          <p class="sp-affil">Professor, Dept. of Chemistry, IISER Pune</p>
+          <p class="sp-lecture">Metals and Medicines in Ancient Indian Chemistry: Teaching at its Best</p>
+        </div>
+      </div>
+
+      <div class="speaker-card r d1">
+        <a class="sp-photo" href="#schedule">
+          <img src="image/Alex_Hankey.png" alt="Prof. Alex Hankey">
+        </a>
+        <div class="sp-body">
+          <span class="sp-talk">Session 3</span>
+          <p class="sp-name">Prof. Alex Hankey</p>
+          <p class="sp-affil">Professor Emeritus, MIT World Peace University, Pune · Cambridge &amp; MIT (Ph.D.)</p>
+          <p class="sp-lecture">The Four Levels of Speech in Śikṣā, the Vedic Science of Education</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<!-- ═══════════════════════════════════════
+     MEDIA VAULT
+═══════════════════════════════════════ -->
+<section class="archive-section dark" id="media">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <p class="section-label">Event Record</p>
+            <h2 class="section-title">Media Vault</h2>
+            <p class="section-note">Photos and session recordings from NCIKSST 2026. Assets are uploaded as they are cleared and processed.</p>
+        </div>
+
+        <div class="media-tabs">
+            <button class="media-tab active" onclick="switchTab('photos', this)">📷 Photos</button>
+            <button class="media-tab" onclick="switchTab('videos', this)">🎬 Session Recordings</button>
+        </div>
+
+        <!-- PHOTOS PANEL -->
+        <div class="media-panel active" id="panel-photos">
+            <div class="media-upload-note">
+                ℹ️ To add real photos: replace each <code>&lt;img src="placeholder.jpg"&gt;</code> below with actual file paths, e.g. <code>media/2026/inauguration-01.jpg</code>
+            </div>
+            <div class="photo-grid">
+                <!-- ── ADD YOUR PHOTOS HERE ──
+                     Replace "placeholder.jpg" with your actual photo paths.
+                     Example: <img src="media/2026/inauguration-01.jpg" alt="Inauguration"> -->
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Inauguration Ceremony"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🎤</span>Inauguration Ceremony</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Keynote - Prof. M.D. Srinivas"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📐</span>Keynote — Prof. M.D. Srinivas</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Session 1 - Mathematics"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🔢</span>Session 1: Ancient Mathematics</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Session 2 - STEM IKS"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>⚗️</span>Session 2: STEM–IKS Integration</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Session 3 - Ancient Sciences"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🌿</span>Session 3: Ancient Sciences</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Tea Break Group Photo"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📸</span>Tea Break Group Photo</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Poster Presentations"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📋</span>Poster Presentations</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Panel Discussion"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🗣️</span>Panel Discussion</div>'">
+                </div>
+                <div class="photo-item">
+                    <img src="placeholder.jpg" alt="Closing Ceremony"
+                         onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🏛️</span>Closing &amp; Felicitations</div>'">
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEOS PANEL -->
+        <div class="media-panel" id="panel-videos">
+            <div class="media-upload-note">
+                ℹ️ To embed YouTube/Vimeo recordings: replace each placeholder with an <code>&lt;iframe&gt;</code> tag using your video URL, e.g. <code>https://www.youtube.com/embed/VIDEO_ID</code>
+            </div>
+            <div class="video-grid">
+                <!-- ── ADD YOUR VIDEO EMBEDS HERE ──
+                     Replace the placeholder divs with:
+                     <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                         allowfullscreen title="Session Title"></iframe>
+                -->
+                <div class="video-item">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="session-label">Inauguration &amp; Keynote Address</span>
+                        <span class="upload-note">Recording to be uploaded</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="session-label">Session 1 — Ancient Indian Mathematics</span>
+                        <span class="upload-note">Recording to be uploaded</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="session-label">Session 2 — STEM–IKS Integration</span>
+                        <span class="upload-note">Recording to be uploaded</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="session-label">Session 3 — Ancient Sciences &amp; Applications</span>
+                        <span class="upload-note">Recording to be uploaded</span>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span class="session-label">Session 5 — Panel Discussion</span>
+                        <span class="upload-note">Recording to be uploaded</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <!-- SPONSOR -->
+  <div class="sec" id="sponsors">
+    <span class="sec-tag r">Support</span>
+    <h2 class="sec-h2 r">Sponsor</h2>
+    <div class="sponsor-wrap r">
+      <div class="sponsor-logo-box">
+        <a href="https://elkaysilicones.com/" target="_blank" rel="noopener" title="Elkay Silicones">
+          <img src="elkay-logo-1536x767.png" alt="Elkay Chemicals logo">
+        </a>
+      </div>
+      <div class="sponsor-info">
+        <h4>Dr. Ravindra Kulkarni</h4>
+        <p>Managing Director, Elkay Silicones<br>
+        Elkay Silicones is a leading manufacturer of specialty silicone products in India. We thank Dr. Kulkarni for his generous support of NCIKSST 2026.</p>
+        <a href="https://elkaysilicones.com/" target="_blank" rel="noopener" style="color:var(--saffron); font-size:.85rem; text-decoration:none; margin-top:.6rem; display:inline-block;">elkaysilicones.com ↗</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand">
+      <a class="logo" href="index.html">
+        <img src="image/ikslogo.webp" alt="IKS Club">
+        <div class="logo-name">IISER Pune IKS Club <small>Indian Knowledge System</small></div>
+      </a>
+      <p>Archive of the National Conference on IKS: Science &amp; Technology, held 7 March 2026 at IISER Pune.</p>
+      <a href="index.html">← Return to Club Homepage</a>
+    </div>
+    <div class="f-col">
+      <h4>Contact</h4>
+      <p>IISER Pune, Dr. Homi Bhabha Road</p>
+      <p>Pune, Maharashtra 411008</p>
+      <a href="mailto:nciks@acads.iiserpune.ac.in">nciks@acads.iiserpune.ac.in</a>
+      <a href="tel:+912025908092">+91 20 2590 8092</a>
+    </div>
+    <div class="f-col">
+      <h4>On This Page</h4>
+      <a href="#leadership">Leadership</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#chairs">Session Chairs</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#sponsors">Sponsor</a>
+      <a href="Updated_Schedule.pdf" download>Download Schedule PDF</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 IISER Pune IKS Club. All rights reserved.</span>
+    <span><strong style="color:rgba(255,255,255,.35);">iksiiserpune.in</strong></span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(
+    es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold:.08, rootMargin:'0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+  // Accordion toggle
+  function toggleSession(header) {
+    const body = header.nextElementSibling;
+    const btn  = header.querySelector('.sched-toggle');
+    const open = body.classList.toggle('open');
+    btn.textContent = open ? 'Collapse ↑' : 'Expand ↓';
+  }
+
+  // Open first session by default
+  document.querySelectorAll('.sched-header')[0]?.click();
+</script>
+</body>
+</html>
