@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iksconference.in/sitemap.xml
+Sitemap: https://iksiiserpune.in/sitemap.xml
